@@ -1,7 +1,3 @@
-<?php require_once 'config.php';
-require_once 'lib/applibrary.php';
-updatecustomercount();
-?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -15,8 +11,8 @@ updatecustomercount();
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-        <meta name="description" content="FlexyCodes - FlexyCard vCard Template. Creating my personal page!"/>
-        <script type="text/JavaScript" src="<?php echo $jconfig->dirroot;?>/lib/geo/geo.js"></script>
+        <meta name="description" content="JJ- My Personal Website!"/>
+        <!--script type="text/JavaScript" src="lib/geo/geo.js"></script-->
         <!-- CSS | bootstrap -->
         <!-- Credits: http://getbootstrap.com/ -->
         <link  rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
@@ -149,11 +145,11 @@ updatecustomercount();
         <!-- Profile Description -->
         <div id="profile_desc">
             <p>
-            	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac risus nibh. Donec adipiscing luctus tur
+                A PHP and JavaScript enthusiast. Worked on various XAMPP and MEAN stack based Web and Mobile application.
             </p>
             <p>
-            	Lorem ipsum dolor sit amet, consectetur adipiscing eli
-            </p>
+                Love to read books, play badminton and an extrovert by heart. <i class="fa fa-smile-o" aria-hidden="true"></i>
+            </p>  
         </div>
         <!-- End Profile Description -->  
     	
@@ -163,63 +159,60 @@ updatecustomercount();
             <h6>My Social Profiles</h6>
             <a href="https://www.facebook.com/Shaan.Exile" target="_blank"><i class="fa fa-facebook"></i></a>
             <a href="https://twitter.com/Shaan_143" target="_blank"><i class="fa fa-twitter"></i></a>
-            <a href="https://www.linkedin.com/profile/view?id=75009462" target='_blank' ><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa fa-dribbble" target="_blank"></i></a>
-            <a href="<?php echo $jconfig->wwwroot?>/home/"><i class="fa fa-foursquare" target="_blank"></i></a>
+            <a href="https://in.linkedin.com/in/jyotirmay-senapati-30615421" target='_blank' ><i class="fa fa-linkedin"></i></a>
+            <a href="https://github.com/jyotirmay123" target="_blank"><i class="fa fa fa-github"></i></a>
+            <a href="http://stackoverflow.com/users/3861545/jyotirmay" target="_blank"><i class="fa fa fa-stack-overflow"></i></a>
             <div class="clear"></div>
         </div>
         <!-- End Name -->  
-      
-    
-    
+
     </div>
-  
-</div>                                </div>
+  </div>                                
+</div>
 
-                                <div class="col-md-9 flexy_content" style="padding-left: 0;padding-right: 0;">
+<div class="col-md-9 flexy_content" style="padding-left: 0;padding-right: 0;">
 
-                                    <!-- verticalTab menu -->
-                                    <div id="verticalTab">
+<!-- verticalTab menu -->
+<div id="verticalTab">
 
-                                        <ul class="resp-tabs-list">
-                                            <li class="tabs-profile hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a profile" data-tab-name="profile">			
-                                                <span class="tite-list">profile</span>
-                                                <i class="fa fa-user icon_menu icon_menu_active"></i>
-                                            </li>
+    <ul class="resp-tabs-list">
+        <li class="tabs-profile hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a profile" data-tab-name="profile">			
+            <span class="tite-list">profile</span>
+            <i class="fa fa-user icon_menu icon_menu_active"></i>
+        </li>
 
-                                            <li class="tabs-resume hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="resume"> 
-                                                <span class="tite-list">resume</span>
-                                                <i class="fa fa-tasks icon_menu"></i>
-                                            </li>
+        <li class="tabs-resume hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="resume"> 
+            <span class="tite-list">resume</span>
+            <i class="fa fa-tasks icon_menu"></i>
+        </li>
 
-                                            <li class="tabs-portfolio hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="portfolio"> 
-                                                <span class="tite-list">portfolio</span>
-                                                <i class="fa fa-briefcase icon_menu"></i>
-                                            </li>
+        <li class="tabs-portfolio hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="portfolio"> 
+            <span class="tite-list">portfolio</span>
+            <i class="fa fa-briefcase icon_menu"></i>
+        </li>
 
-                                            <li class="tabs-blog hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="blog">
-                                                <span class="tite-list">blog</span>
-                                                <i class="fa fa-bullhorn icon_menu"></i>
-                                            </li>
+        <li class="tabs-blog hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="blog">
+            <span class="tite-list">blog</span>
+            <i class="fa fa-bullhorn icon_menu"></i>
+        </li>
 
-                                            <li class="tabs-contact hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="contact" style="margin-bottom: 48px !important;"> 
-                                                <span class="tite-list">contact</span>
-                                                <i class="fa fa-envelope icon_menu"></i> 
-                                            </li>
+        <li class="tabs-contact hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="contact" style="margin-bottom: 48px !important;"> 
+            <span class="tite-list">contact</span>
+            <i class="fa fa-envelope icon_menu"></i> 
+        </li>
 
-                                            <a onclick = "window.print()" id="print"><i class="fa fa-print icon_print"></i> </a>
-                                            <a href="#" id="downlowd"><i class="fa fa-download icon_print"></i> </a>
-                                        </ul>
-                                        <!-- /resp-tabs-list -->
+        <a href="file/My_resume.pdf" target="_blank" id="print"><i class="fa fa-print icon_print"></i> </a>
+        <a href="download_resume.php" id="downlowd"><i class="fa fa-download icon_print"></i> </a>
+    </ul>
+    <!-- /resp-tabs-list -->
 
 
+<!-- resp-tabs-container --> 
+<div class="resp-tabs-container">
 
-                                        <!-- resp-tabs-container --> 
-                                        <div class="resp-tabs-container">
-
-                                            <!-- profile -->
-                                            <div id="profile" class="content_2">
-                                                <!-- .title -->
+    <!-- profile -->
+    <div id="profile" class="content_2">
+        <!-- .title -->
 <h1 class="h-bloc">Profile - About Me</h1>
 
 <div class="row top-p">
@@ -243,7 +236,7 @@ updatecustomercount();
             <li>
                 <i class="glyphicon glyphicon-calendar"></i>
                 <label>Date of birth</label>
-                <span class="value">February 12, 1991</span>
+                <span class="value">February 12, 1992</span>
                 <div class="clear"></div>
             </li>
 
@@ -280,15 +273,15 @@ updatecustomercount();
 
         <p style="margin-bottom:20px">
             <i class="fa fa-quote-left"></i>       
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec nulla sagittis, scelerisque mi vitae, congue turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec nulla sagittis, scelerisque mi vitae, congue turpis.
-        </p>
-        
-         <p style="margin-bottom:20px">
+                Hey guys, I am Jyotirmay, fondly called as "JJ" by my close ones. Born and brought up in Baripada, a small town
+                in Mayurbhanj district of Odisha, India.
+                Currently, I am staying in Bangalore. I teach PHP and JavaScript.
+            </p>
+            <p style="margin-bottom:20px">
             <i class="fa fa-quote-left"></i>       
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec nulla sagittis, scelerisque mi vitae, congue turpis. 
-
-        </p>
-
+                Writes blog and loves to motivate young people pouring into IT. 
+                Please contact me, if you need any help on above contacts.
+            </p>
     </div>
     <!-- End left-wrap -->
 
@@ -308,7 +301,7 @@ updatecustomercount();
 
 
     <div class="row" id="services">
-		<div class="col-md-12">
+		<!--div class="col-md-12">
             <div class="title_content">
                 <div class="text_content">My Services 1</div>
                 <div class="clear"></div>
@@ -343,10 +336,10 @@ updatecustomercount();
                 </div>
             </div>
          </div> 
-    </div><!-- End Services -->
+    </div--><!-- End Services -->
 
 
-    <div class="clear"></div>
+    <!--div class="clear"></div>
     <div class="border-list"></div>
 	
     <div class="row">
@@ -406,248 +399,35 @@ updatecustomercount();
             </div>
     
         </div>
- </div>
+ </div-->
  
  
   </div>
     <div class="clear"></div>
-                                            </div>
-                                            <!-- End .profile -->
+</div>
+<!-- End .profile -->
 
-                                            <!-- .resume -->
-                                            <div id="resume" class="content_2">
-                                                <!-- .title -->
-<h1 class="h-bloc">Resume - Personal Info</h1> 
+<!-- .resume -->
+<div id="resume" class="content_2">
 
-<div class="row">
-
-   <!-- .resume-right -->
-    <div class="col-md-6">
-
-        <!-- .title_content -->
-        <div class="title_content" style="float: none;">
-            <div class="text_content">Designs skills</div>
-            <div class="clear"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <!-- .title -->
+            <h1 class="h-bloc">Resume - Personal Info</h1> 
         </div>
-        <!-- /.title_content -->
-        
-        <div class="skills">
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="95%">
-                <div class="skillbar-title"><span>Photoshop</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">95%</div>
-            </div>
-    
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="90%">
-                <div class="skillbar-title"><span>Illustrateur</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">90%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="65%">
-                <div class="skillbar-title"><span>Indesign</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">65%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="35%">
-                <div class="skillbar-title"><span>Flash</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">35%</div>
-            </div>
-            <!-- /.skillbar -->
+        <div class="col-md-6">
+            <!-- .download_resume -->
+            <a class="download" style="margin:0;float: right;" href="download_resume.php" target="_blank">
+                <span data-hover="Download"><i class="glyphicon glyphicon-download-alt"></i> My Resume </span>
+            </a>
+            <!-- /.download_resume -->
         </div>
-        
-        
-        <!-- .title_content -->
-        <div class="title_content" style="float: none;">
-            <div class="text_content">Programming Skills</div>
-            <div class="clear"></div>
-        </div>
-        <!-- /.title_content -->
-        
-        <div class="skills">
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="50%">
-                <div class="skillbar-title"><span>C</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">50%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="65%">
-                <div class="skillbar-title"><span>C++</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">65%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="65%">
-                <div class="skillbar-title"><span>Java</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">60%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-             <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="60%">
-                <div class="skillbar-title"><span>Php</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">60%</div>
-            </div>
-            <!-- /.skillbar --> 
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="70%">
-                <div class="skillbar-title"><span>Moodle</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">70%</div>
-            </div>
-            <!-- /.skillbar --> 
-        </div>
-        
-         
-        <!-- .title_content -->
-        <div class="title_content" style="float: none;">
-            <div class="text_content">Office Skills</div>
-            <div class="clear"></div>
-        </div>
-        <!-- /.title_content -->
-            
-        <div class="skills">       
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="55%">
-                <div class="skillbar-title"><span>MS Excel</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">55%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="85%">
-                <div class="skillbar-title"><span>MS Word</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">85%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="85%">
-                <div class="skillbar-title"><span>Powerpoint</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">85%</div>
-            </div>
-            <!-- /.skillbar -->
-              
-		</div>
-        
-        
-        <!-- .title_content -->
-        <div class="title_content" style="float: none;">
-            <div class="text_content">Hobbies Skills</div>
-            <div class="clear"></div>
-        </div>
-        <!-- /.title_content -->
-        
-        <div class="skills">
-            <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="55%">
-                <div class="skillbar-title"><span>Sport</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">55%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="80%">
-                <div class="skillbar-title"><span>Reading</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">80%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="90%">
-                <div class="skillbar-title"><span>Travelling</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">90%</div>
-            </div>
-            <!-- /.skillbar -->
-        </div>
-        
-        
-        <!-- .title_content -->
-        <div class="title_content" style="float: none;">
-            <div class="text_content">Language Skills</div>
-            <div class="clear"></div>
-        </div>
-        <!-- /.title_content -->
-        
-        <div class="skills">
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="90%">
-                <div class="skillbar-title"><span>Odia</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">90%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="80%">
-                <div class="skillbar-title"><span>Hindi</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">80%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="70%">
-                <div class="skillbar-title"><span>English</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">70%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="50%">
-                <div class="skillbar-title"><span>Bengali</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">50%</div>
-            </div>
-            <!-- /.skillbar -->
-        </div>
-        
-        
-        <!-- .title_content -->
-        <div class="title_content" style="float: none;">
-            <div class="text_content">My Resume</div>
-            <div class="clear"></div>
-        </div>
-        <!-- /.title_content -->
-        
-        <!-- .download_resume -->
-        <a class="download" style="margin:0;float: left;" href="#">
-            <span data-hover="Download My Resume"><i class="glyphicon glyphicon-download-alt"></i> Download My Resume</span>
-        </a>
-        <!-- /.download_resume -->
-
     </div>
-     <!-- /.resume-right -->
      
      
-     
-     <!-- .resume-left -->
-    <div class="col-md-6 resume-left">    
+     <div class="row">
+     <!-- .resume-top -->
+    <div class="col-md-12 resume-left">    
         <!-- .title_content -->
         <div class="title_content" style="margin-bottom:5px">
             <div class="text_content">Experience</div>
@@ -655,12 +435,32 @@ updatecustomercount();
         </div>
         <!-- /.title_content -->
         
+         <!-- .attributes -->
+        <ul class="attributes">
+            <li class="first">
+                <h5>Technical Solutions Engineer <span class="duration"><i class="fa fa-calendar color"></i> 2016 - Present</span></h5>
+                <h6>
+                    <span class="fa fa-briefcase"></span>
+                    <a href="https://www.pega.com/" target="_blank"> PegaSystems Worldwide India Ltd. Bangalore, India</a>
+                </h6>
+                    <p>	Provide UI specialized consultancy as system architecture consultant to Pega system customers.</p>
+                    <p>Member of Pega technical recruitment panel. </p>
+                    <p>Train new team members on Pega UI Technologies – JavaScript, HTML5 and CSS3. </p> 
+            </li>
+        </ul>
+        <!-- /.attributes -->
+
         <!-- .attributes -->
         <ul class="attributes">
             <li class="first">
-                <h5>Web Developer <span class="duration"><i class="fa fa-calendar color"></i> 2014 - Present</span></h5>
-                <h6><span class="fa fa-briefcase"></span> TCS</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscingVivamus sit amet ligula non lectus cursus egestas. Cras erat lorem, fringilla quis sagittis in, sagittis inNam leo tortor Nam leo tortor Vivamus.</p>
+                <h5>System Engineer <span class="duration"><i class="fa fa-calendar color"></i> 2014 - 2016</span></h5>
+                <h6>
+                    <span class="fa fa-briefcase"></span>
+                    <a href="http://www.tcs.com/" target="_blank"> Tata Consultancy Services Ltd. Bangalore, India</a>
+                </h6>
+                    <p>Developed hybrid and web mobile applications for TCS-Qualcomm internal employees using MEAN stack.</p>
+                    <p>Analyzed around 150+ database tables for data migration of 20 lakhs+ business data.</p>
+                    <p>Developed Learning Management System for Qualcomm using Moodle framework.</p>
             </li>
         </ul>
         <!-- /.attributes -->
@@ -677,18 +477,28 @@ updatecustomercount();
         <ul class="attributes">
             <li  class="first">
                 <h5>Bachelor of Engineering <span class="duration"><i class="fa fa-calendar color"></i> 2009 - 2013</span></h5>
-                <h6><span class="fa fa-book"></span> Gandhi Institute of Engineering and Tech.</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscingVivamus sit amet ligula non lectus cursus egestas. Cras erat lorem, fringilla quis sagittis in, sagittis inNam leo tortor Nam leo tortor Vivamus.</p>
+                <h6>
+                    <span class="fa fa-book"></span>
+                    <a href="http://www.giet.edu" target="_blank"> Gandhi Institute of Engineering and Tech. Gunupur, Odisha, India</a>
+                </h6>
+                <p>Completed Bachelors under Biju Patnaik University of Technology. <a href="http://www.bput.ac.in/" target="_blank">(BPUT)</a>.</p>
+                <p>Secured 8.26 CGPA out of 10.</p>
             </li>
             <li>
                 <h5>Intermediate <span class="duration"><i class="fa fa-calendar color"></i> 2007 - 2009</span></h5>
-                <h6><span class="fa fa-book"></span> M.P.C. Jr. College</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscingVivamus sit amet ligula non lectus cursus egestas. Cras erat lorem, fringilla quis sagittis in, sagittis inNam leo tortor Nam leo tortor Vivamus.</p>
+                <h6>
+                    <span class="fa fa-book"></span>
+                    <a href="http://www.mpcautocollege.org.in/" target="_blank"> Maharaja Purna Chandra Jr. College, Baripada, Odisha, India</a>
+                </h6>
+                <p>Completed Intermediate in Science(PSMB) with first division.</p>
             </li>
             <li>
-                <h5>Schooling <span class="duration"><i class="fa fa-calendar color"></i> 2002 - 2007</span></h5>
-                <h6><span class="fa fa-book"></span> JNV, Salbani</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscingVivamus sit amet ligula non lectus cursus egestas. Cras erat lorem, fringilla quis sagittis in, sagittis inNam leo tortor Nam leo tortor Vivamus.</p>
+                <h5>Schooling & Matriculation <span class="duration"><i class="fa fa-calendar color"></i> 2002 - 2007</span></h5>
+                <h6>
+                    <span class="fa fa-book"></span>
+                    <a href="http://www.jnvmayurbhanj.org/" target="_blank">Jawahar Navodaya Vidyalaya, Salbani, Odisha, India</a>
+                </h6>
+                <p>Completed Schooling and Matriculation in JNV and secured 87.6%.</p>
             </li>
         </ul>
         <!-- /.attributes -->
@@ -720,27 +530,219 @@ updatecustomercount();
         <br>  
         
     </div>
-    <!-- /.resume-left -->
+    <!-- /.resume-top -->
+
+    <div class="row">
+
+   <!-- .resume-bottom -->
+    <div class="col-md-6" style="padding-left: 30px;">
+        <!-- .title_content -->
+        <div class="title_content" style="float: none;">
+            <div class="text_content">Programming Skills</div>
+            <div class="clear"></div>
+        </div>
+        <!-- /.title_content -->
+        
+        <div class="skills">
+            <!-- .skillbar -->
+            <div class="skillbar clearfix" data-percent="70%">
+                <div class="skillbar-title"><span>PHP</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">70%</div>
+            </div>
+            <!-- /.skillbar -->
+            
+            <!-- .skillbar -->
+            <div class="skillbar clearfix" data-percent="70%">
+                <div class="skillbar-title"><span>JavaScript</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">70%</div>
+            </div>
+            <!-- /.skillbar -->
+            
+            <!-- .skillbar -->
+            <div class="skillbar clearfix" data-percent="75%">
+                <div class="skillbar-title"><span>MySQL</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">75%</div>
+            </div>
+            <!-- /.skillbar -->
+            
+             <!-- .skillbar -->
+            <div class="skillbar clearfix" data-percent="60%">
+                <div class="skillbar-title"><span>Angular-2</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">60%</div>
+            </div>
+            <!-- /.skillbar --> 
+            
+            <!-- .skillbar -->
+            <div class="skillbar clearfix" data-percent="50%">
+                <div class="skillbar-title"><span>Java</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">50%</div>
+            </div>
+            <!-- /.skillbar --> 
+        </div>
+
+        <!-- .title_content -->
+        <div class="title_content" style="float: none;">
+            <div class="text_content">Language Skills</div>
+            <div class="clear"></div>
+        </div>
+        <!-- /.title_content -->
+        
+        <div class="skills">
+            <!-- .skillbar -->
+            <div class="skillbar clearfix " data-percent="75%">
+                <div class="skillbar-title"><span>English</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">75%</div>
+            </div>
+            <!-- /.skillbar -->
+
+            <!-- .skillbar -->
+            <div class="skillbar clearfix" data-percent="90%">
+                <div class="skillbar-title"><span>Odia</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">90%</div>
+            </div>
+            <!-- /.skillbar -->
+            
+            <!-- .skillbar -->
+            <div class="skillbar clearfix " data-percent="80%">
+                <div class="skillbar-title"><span>Hindi</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">80%</div>
+            </div>
+            <!-- /.skillbar -->
+            
+            <!-- .skillbar -->
+            <div class="skillbar clearfix " data-percent="50%">
+                <div class="skillbar-title"><span>Bengali</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">50%</div>
+            </div>
+            <!-- /.skillbar -->
+
+             <!-- .skillbar -->
+            <div class="skillbar clearfix " data-percent="40%">
+                <div class="skillbar-title"><span>German</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">40%</div>
+            </div>
+            <!-- /.skillbar -->
+        </div>
+    </div>
+    <div class="col-md-6">
+         <!-- .title_content -->
+        <div class="title_content" style="float: none;">
+            <div class="text_content">Designs skills</div>
+            <div class="clear"></div>
+        </div>
+        <!-- /.title_content -->
+        
+        <div class="skills">
+            <!-- .skillbar -->
+            <div class="skillbar clearfix" data-percent="45%">
+                <div class="skillbar-title"><span>Photoshop</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">45%</div>
+            </div>
+            <!-- /.skillbar -->
+        </div>
+
+
+        <!-- .title_content -->
+        <div class="title_content" style="float: none;">
+            <div class="text_content">Office Skills</div>
+            <div class="clear"></div>
+        </div>
+        <!-- /.title_content -->
+            
+        <div class="skills">       
+            <!-- .skillbar -->
+            <div class="skillbar clearfix" data-percent="55%">
+                <div class="skillbar-title"><span>MS Excel</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">55%</div>
+            </div>
+            <!-- /.skillbar -->
+            
+            <!-- .skillbar -->
+            <div class="skillbar clearfix " data-percent="65%">
+                <div class="skillbar-title"><span>MS Word</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">65%</div>
+            </div>
+            <!-- /.skillbar -->
+            
+            <!-- .skillbar -->
+            <div class="skillbar clearfix " data-percent="70%">
+                <div class="skillbar-title"><span>Powerpoint</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">70%</div>
+            </div>
+            <!-- /.skillbar -->
+              
+		</div>
+        
+        
+        <!-- .title_content -->
+        <div class="title_content" style="float: none;">
+            <div class="text_content">Hobbies Skills</div>
+            <div class="clear"></div>
+        </div>
+        <!-- /.title_content -->
+        
+        <div class="skills">
+            <!-- .skillbar -->
+            <div class="skillbar clearfix " data-percent="70%">
+                <div class="skillbar-title"><span>Sport</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">70%</div>
+            </div>
+            <!-- /.skillbar -->
+            
+            <!-- .skillbar -->
+            <div class="skillbar clearfix " data-percent="80%">
+                <div class="skillbar-title"><span>Reading</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">80%</div>
+            </div>
+            <!-- /.skillbar -->
+            
+            <!-- .skillbar -->
+            <div class="skillbar clearfix " data-percent="90%">
+                <div class="skillbar-title"><span>Travelling</span></div>
+                <div class="skillbar-bar"></div>
+                <div class="skill-bar-percent">90%</div>
+            </div>
+            <!-- /.skillbar -->
+        </div>
+        </div>
+     <!-- /.resume-bottom -->
+     </div>
 </div>
 
   <div style="clear: both"></div>  
   
   
 <!-- client reference -->
-<div class="row">
+<!--div class="row">
     <div class="col-md-12">   
     
-<div class="reference clearfix"> 
+<div class="reference clearfix"--> 
             
          <!-- .title_content -->
-        <div class="title_content" style="margin-bottom:5px">
+        <!--div class="title_content" style="margin-bottom:5px">
             <div class="text_content">Client reference</div>
             <div class="clear"></div>
-        </div>
+        </div-->
         <!-- /.title_content -->
         
 
-        <ul>
+        <!--ul>
             <li class="clearfix">
                 <img src="http://placehold.it/100x100" class="img_reference" width="100" height="100" alt="">
                 <p>â€œMany desktop publishing packages and web page editors now use Lorem Ipsum as their default will model text, and a search for 'lorem ipsum' hope is uncover many web sites stillâ€�</p>
@@ -764,7 +766,7 @@ updatecustomercount();
      
      
      <div style="clear: both"></div>   
-</div>
+</div-->
 
                                             </div>
                                             <!-- End .resume -->
@@ -781,225 +783,112 @@ updatecustomercount();
   <!-- #filters -->
   <ul id="filters" class="clearfix">
         <li><span class="filter active" data-filter="catWeb catGraphic catMotion logo">All</span></li>
-        <li><span class="filter" data-filter="catWeb">Web Design</span></li>
-        <li><span class="filter" data-filter="catGraphic">Graphic Design</span></li>
-        <li><span class="filter" data-filter="catMotion">Motion Graphic</span></li>
-        <li><span class="filter" data-filter="logo">Logo</span></li>
+        <li><span class="filter" data-filter="catWeb">PHP</span></li>
+        <li><span class="filter" data-filter="catGraphic">MEAN</span></li>
+        <li><span class="filter" data-filter="catMotion">Angular-2</span></li>
+        <li><span class="filter" data-filter="logo">Other</span></li>
     </ul>
     <!-- /#filters -->
 
+    <!-- Mapping>
+    PHP == catweb
+    MEAN == catGraphic
+    Angular-2 == catMotion
+    Other == logo
+    <MApping-->
+
     <!-- #portfoliolist -->
     <div id="portfoliolist">
-    
-    
-          <div class="view view-first portfolio logo" data-cat="logo">
+        
+        <div class="view view-first portfolio catWeb" data-cat="catWeb">
             <img src="images/portfolio/thumb/1.jpg" />
             <div class="mask">
-                <h2>Project Name</h2>
-                <p>A wonderful serenity has taken possession of my entire soul.</p>
+                <h2>Productfeed</h2>
+                <p>A project to transfer data in .csv and .json file into MySQL database.</p>
                 
                 <a href="images/portfolio/1.jpg" rel="portfolio" class="info open-imag">
                 	<i class="fa fa-search"></i>
                 </a>
-                
+                <a href="https://github.com/jyotirmay123/php_productfeed" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
             </div>
         </div> 
         
-        <div class="view view-first portfolio catWeb" data-cat="catWeb">
+        <div class="view view-first portfolio catMotion" data-cat="catMotion">
             <img src="images/portfolio/thumb/2.jpg" />
             <div class="mask">
-                <h2>Project Name</h2>
-                <p>A wonderful serenity has taken possession of my entire soul.</p>
+                <h2>My Blog</h2>
+                <p>An Angular2 and Typescript based BLOG engine.</p>
                 
-                <a href="images/portfolio/2.jpg" rel="portfolio" class="info open-imag">
+                 <a href="images/portfolio/2.jpg" rel="portfolio" class="info open-imag">
                 	<i class="fa fa-search"></i>
                 </a>
-                <a href="http://www.youtube.com/watch?v=c9MnSeYYtYY" rel="portfolio" class="info external"><i class="fa fa-play"></i></a> 
+                <a href="https://github.com/jyotirmay123/myblog_1.0" class="info external"><i class="fa fa-link"></i></a> 
             </div>
-        </div> 
+        </div>
         
         <div class="view view-first portfolio catWeb" data-cat="catWeb">
             <img src="images/portfolio/thumb/3.jpg" />
             <div class="mask">
-                <h2>Project Name</h2>
-                <p>A wonderful serenity has taken possession of my entire soul.</p>
+                <h2>Moodle</h2>
+                <p>A learning management system built on top of PHP moodle framework.</p>
                 
                  <a href="images/portfolio/3.jpg" rel="portfolio" class="info open-imag">
                 	<i class="fa fa-search"></i>
                 </a>
-                <a href="http://themeforest.net/item/flexyvcard-responsive-vcard-template-/7158750?WT.ac=solid_search_thumb&amp;WT.seg_1=solid_search_thumb&amp;WT.z_author=flexycodes?width=800&amp;height=500&amp;iframe=true" rel="portfolio" class="info external">
-                <i class="fa fa-link"></i>
-                </a> 
+                <a href="https://github.com/jyotirmay123/moodle" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
             </div>
         </div> 
         
-        <div class="view view-first portfolio catMotion" data-cat="catMotion">
+        <div class="view view-first portfolio catGraphic" data-cat="catGraphic">
             <img src="images/portfolio/thumb/4.jpg" />
             <div class="mask">
-                <h2>Project Name</h2>
-                <p>A wonderful serenity has taken possession of my entire soul.</p>
+                <h2>Associate Portal - Client</h2>
+                <p>Client part of Associate Portal app.</p>
                 
                  <a href="images/portfolio/4.jpg" rel="portfolio" class="info open-imag">
                 	<i class="fa fa-search"></i>
                 </a>
-                <a href="http://themeforest.net/?width=800&amp;height=500&amp;iframe=true" rel="portfolio"  class="info external"><i class="fa fa-link"></i></a> 
-            </div>
-        </div>
-        
-        <div class="view view-first portfolio catWeb" data-cat="catWeb">
-            <img src="images/portfolio/thumb/5.jpg" />
-            <div class="mask">
-                <h2>Project Name</h2>
-                <p>A wonderful serenity has taken possession of my entire soul.</p>
-                
-                 <a href="images/portfolio/5.jpg" rel="portfolio" class="info open-imag">
-                	<i class="fa fa-search"></i>
-                </a>
-                <a href="http://vimeo.com/7449107" rel="portfolio" class="info external"><i class="fa fa-play"></i></a> 
-            </div>
-        </div> 
-        
-        <div class="view view-first portfolio catMotion" data-cat="catMotion">
-            <img src="images/portfolio/thumb/6.jpg" />
-            <div class="mask">
-                <h2>Project Name</h2>
-                <p>A wonderful serenity has taken possession of my entire soul.</p>
-                
-                 <a href="images/portfolio/6.jpg" rel="portfolio" class="info open-imag">
-                	<i class="fa fa-search"></i>
-                </a>
-                <a href="http://themeforest.net/user/flexycodes" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
+                <a href="https://github.com/jyotirmay123/aportalweb" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
             </div>
         </div>
         
         <div class="view view-first portfolio catGraphic" data-cat="catGraphic">
-            <img src="images/portfolio/thumb/7.jpg" />
+            <img src="images/portfolio/thumb/5.jpg" />
             <div class="mask">
-                <h2>Project Name</h2>
-                <p>A wonderful serenity has taken possession of my entire soul.</p>
+                <h2>Associate Portal - Server</h2>
+                <p>Service layer of Associate Portal app.</p>
                 
-                 <a href="images/portfolio/7.jpg" rel="portfolio" class="info open-imag">
+                 <a href="images/portfolio/5.jpg" rel="portfolio" class="info open-imag">
                 	<i class="fa fa-search"></i>
                 </a>
-                <a href="http://themeforest.net/user/flexycodes" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
+                <a href="https://github.com/jyotirmay123/aportal" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
             </div>
         </div>
-        
+
         <div class="view view-first portfolio logo" data-cat="logo">
-            <img src="images/portfolio/thumb/8.jpg" />
+            <img src="images/portfolio/thumb/6.jpg" />
             <div class="mask">
-                <h2>Project Name</h2>
-                <p>A wonderful serenity has taken possession of my entire soul.</p>
+                <h2>Hibernate POC</h2>
+                <p>A POC on Hibernate.</p>
                 
-                 <a href="images/portfolio/thumb/8.jpg" rel="portfolio" class="info open-imag">
+                 <a href="images/portfolio/6.jpg" rel="portfolio" class="info open-imag">
                 	<i class="fa fa-search"></i>
                 </a>
-                <a href="http://themeforest.net/user/flexycodes" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
+                <a href="https://github.com/jyotirmay123/HibernateTemplateEx" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
             </div>
         </div>
-        
-        <div class="view view-first portfolio catWeb" data-cat="catWeb">
-            <img src="images/portfolio/thumb/9.jpg" />
-            <div class="mask">
-                <h2>Project Name</h2>
-                <p>A wonderful serenity has taken possession of my entire soul.</p>
-                
-                 <a href="images/portfolio/9.jpg" rel="portfolio" class="info open-imag">
-                	<i class="fa fa-search"></i>
-                </a>
-                <a href="http://themeforest.net/user/flexycodes" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
-            </div>
-        </div>
-        
-         <div class="view view-first portfolio catGraphic" data-cat="catGraphic">
-            <img src="images/portfolio/thumb/10.jpg" />
-            <div class="mask">
-                <h2>Project Name</h2>
-                <p>A wonderful serenity has taken possession of my entire soul.</p>
-                
-                 <a href="images/portfolio/10.jpg" rel="portfolio" class="info open-imag">
-                	<i class="fa fa-search"></i>
-                </a>
-                <a href="http://themeforest.net/user/flexycodes" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
-            </div>
-        </div>
-        
-         <div class="view view-first portfolio logo" data-cat="logo">
-            <img src="images/portfolio/thumb/11.jpg" />
-            <div class="mask">
-                <h2>Project Name</h2>
-                <p>A wonderful serenity has taken possession of my entire soul.</p>
-                
-                 <a href="images/portfolio/11.jpg" rel="portfolio" class="info open-imag">
-                	<i class="fa fa-search"></i>
-                </a>
-                <a href="http://themeforest.net/user/flexycodes" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
-            </div>
-        </div>
-        
-         <div class="view view-first portfolio logo" data-cat="logo">
-            <img src="images/portfolio/thumb/12.jpg" />
-            <div class="mask">
-                <h2>Project Name</h2>
-                <p>A wonderful serenity has taken possession of my entire soul.</p>
-                
-                 <a href="images/portfolio/12.jpg" rel="portfolio" target="_blank" class="info open-imag">
-                	<i class="fa fa-search"></i>
-                </a>
-                <a href="http://themeforest.net/user/flexycodes" class="info external"><i class="fa fa-link"></i></a> 
-            </div>
-        </div>
-        
-         <div class="view view-first portfolio catGraphic" data-cat="catGraphic">
-            <img src="images/portfolio/thumb/13.jpg" />
-            <div class="mask">
-                <h2>Project Name</h2>
-                <p>A wonderful serenity has taken possession of my entire soul.</p>
-                
-                 <a href="images/portfolio/13.jpg" rel="portfolio" class="info open-imag">
-                	<i class="fa fa-search"></i>
-                </a>
-                <a href="http://themeforest.net/user/flexycodes" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
-            </div>
-        </div>
-        
-         <div class="view view-first portfolio logo" data-cat="logo">
-            <img src="images/portfolio/thumb/14.jpg" />
-            <div class="mask">
-                <h2>Project Name</h2>
-                <p>A wonderful serenity has taken possession of my entire soul.</p>
-                
-                 <a href="images/portfolio/14.jpg" rel="portfolio" class="info open-imag">
-                	<i class="fa fa-search"></i>
-                </a>
-                <a href="http://themeforest.net/user/flexycodes/portfolio" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
-            </div>
-        </div>
-        
-         <div class="view view-first portfolio catGraphic" data-cat="catGraphic">
-            <img src="images/portfolio/thumb/15.jpg" />
-            <div class="mask">
-                <h2>Project Name</h2>
-                <p>A wonderful serenity has taken possession of my entire soul.</p>
-                
-                 <a href="images/portfolio/15.jpg" rel="portfolio" class="info open-imag">
-                	<i class="fa fa-search"></i>
-                </a>
-                <a href="http://themeforest.net/user/flexycodes" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
-            </div>
-        </div>
-        
     
         <div class="clear"></div>
     
   </div>
     <!-- #images/portfoliolist -->
-</div>                                            </div>
-                                            <!-- End .portfolio -->
+</div>                                            
+</div>
+<!-- End .portfolio -->
 
-                                            <!-- .blog -->
-                                            <div id="blog" class="content_2">
-                                                <h1 class="h-bloc">Blog - My Blog</h1><br> 
+<!-- .blog -->
+<div id="blog" class="content_2">
+    <h1 class="h-bloc">Blog - My Blog</h1><br> 
 
 <div class="col-md-12">
     <div class="row">
@@ -1035,8 +924,8 @@ updatecustomercount();
                                                 <div class="item active">
                                                     <img src="images/blog/blog-1.jpg" alt="" />
                                                     <div class="carousel-caption">
-                                                        <h4>First Thumbnail label</h4>
-                                                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                                        <h4></h4>
+                                                        <p></p>
                                                     </div>
                                                 </div>
 
@@ -1044,16 +933,16 @@ updatecustomercount();
                                                 <div class="item">
                                                     <img src="images/blog/blog-2.jpg" alt="" />
                                                     <div class="carousel-caption">
-                                                        <h4>First Thumbnail label</h4>
-                                                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                                        <h4></h4>
+                                                        <p></p>
                                                     </div>
                                                 </div>
 
                                                 <div class="item">
                                                     <img src="images/blog/blog-3.jpg" alt="" />
                                                     <div class="carousel-caption">
-                                                        <h4>First Thumbnail label</h4>
-                                                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                                        <h4></h4>
+                                                        <p></p>
                                                     </div>
                                                 </div>
 
@@ -1080,11 +969,11 @@ updatecustomercount();
                                     <div class="top_c ">
 
                                         <div class="title_content">
-                                            <div class="text_content"><a href="#post-1" class="read_more">Blog Post Gallery</a></div>
+                                            <div class="text_content"><a href="http://blog.jyotirmaysenapati.com/#/blog/new?width=800&amp;height=500&amp;iframe=true" target="_blank" class="info external">Yet To Configure Here.</a></div>
                                             <div class="clear"></div>
                                         </div>
 
-                                        <ul class="info">
+                                        <!--ul class="info">
                                             <li><i class="glyphicon glyphicon-comment"></i> 2 Comments</li>
                                             <li><i class="glyphicon glyphicon-time"></i> January 31, 2014</li>
                                             <li><i class="glyphicon glyphicon-user"></i> by Jane Doe</li>
@@ -1092,23 +981,23 @@ updatecustomercount();
                                         </ul>
 
                                         <div class="blog-content">
-                                            <p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo...</p></div>
+                                            <p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo...</p></div-->
                                     </div>
                                 </div>	
 
-                                <a href="#post-1" class="read_m pull-right">Read More <i class='glyphicon glyphicon-chevron-right'></i></a>
+                                <a href="http://blog.jyotirmaysenapati.com" class="download" target="_blank"><span data-hover="My Blog" style="color:white">Click to access myblog here</span></a>
 
                             </div>
                         </div>
 
-                    </div>
+                    </div-->
                 </article>
                 <!-- End Post 1 -->
 
                 <div class="clear"></div>
 
                 <!-- Post 2 -->
-                <article id="post-2" class="blog-article">                    
+                <!--article id="post-2" class="blog-article">                    
 
                     <div class="col-md-12">
 
@@ -1151,13 +1040,13 @@ updatecustomercount();
                         </div>
 
                     </div>
-                </article>
+                </article-->
                 <!-- End Post 2 -->
 
-                <div class="clear"></div>
+                <!--div class="clear"></div-->
 
                 <!-- Post 3 -->
-                <article id="post-3" class="blog-article">                    
+                <!--article id="post-3" class="blog-article">                    
 
                     <div class="col-md-12">
 
@@ -1206,7 +1095,7 @@ updatecustomercount();
                         </div>
 
                     </div>
-                </article>
+                </article-->
 
                 <!-- End Post 3 -->
 
@@ -1960,11 +1849,11 @@ updatecustomercount();
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h3 class="modal-title h3_modal" style="color: #fff !important;">FlexyVcard - Responsive Vcard Template</h3>
+                        <h3 class="modal-title h3_modal" style="color: #fff !important;">jyotirmaysenapati.com</h3>
                     </div>
                     <div class="modal-body">
-                        <p>FlexyVcard is an impressive and professional online vcard, a beautiful portfolio with sliding effect, resume and contact information with Google map.</p>
-                        <p>Itâ€™s simple! Just download and install in a few minutes, you can show your online card to your friend, customer or employer in an interview by phone or tablet. Because FlexyVcard is a responsive template, you can view your website on pc as well as handheld devices. You can also link to your social profiles, display your portfolio in many media format such as image, youtube video, flash...</p>
+                        <p></p>
+                        <p></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -1988,6 +1877,13 @@ updatecustomercount();
 
                                             <div class="col-lg-12">
                                                 <div id="map"></div>
+                                                <?php
+                                                /*
+                                                    header('X-Frame-Options: GOFORIT'); 
+                                                    print '<iframe src="https://www.google.com/maps/place/SLN+Bajaj/@12.9571938,77.7361816,17z/data=!3m1!4b1!4m5!3m4!1s0x3bae120ea0867e9f:0x5136905bd142bc2b!8m2!3d12.9571886!4d77.7383703"></iframe>';
+                                                */
+                                                ?>
+                                                
                                             </div>  
 
                                             <div class="col-lg-12">
@@ -2002,13 +1898,12 @@ updatecustomercount();
                                                             </div>
 
                                                             <ul>
-                                                                <li><span class="span-info"><i class="glyphicon glyphicon-map-marker"></i> Adress:</span> San Francisco , CA.<br /><br /></li>
-                                                                <li><span class="span-info"><i class="glyphicon glyphicon-envelope"></i> Email:</span> brown.smith@gmail.com</li>
-                                                                <li><span class="span-info"><i class="glyphicon glyphicon-phone"></i> Phone:</span> +123 456 789 111</li>
-                                                                <li><span class="span-info"><i class="glyphicon glyphicon-globe"></i> Website:</span> www.brown-smith.com</li>
-                                                                <li><span class="span-info"><i class="glyphicon glyphicon-comment"></i> Skype:</span> brown-smith-skype</li>
-                                                                <li><span class="span-info"><i class="glyphicon glyphicon-thumbs-up"></i> G. Drive:</span> brown-s-gm@gmail.com</li>
-                                                                <li><span class="span-info"><i class="glyphicon glyphicon-unchecked"></i> Skydrive:</span> brown-s-sk@hotmail.com</li>
+                                                                <li><span class="span-info"><i class="glyphicon glyphicon-map-marker"></i> Adress:</span> Bangalore, India<br /><br /></li>
+                                                                <li><span class="span-info"><i class="glyphicon glyphicon-envelope"></i> Email:</span> mail@jyotirmaysenapati.com</li>
+                                                                <li><span class="span-info"><i class="glyphicon glyphicon-phone"></i> Phone:</span> +91 9632555479</li>
+                                                                <li><span class="span-info"><i class="glyphicon glyphicon-globe"></i> Website:</span> www.jyotirmaysenapati.com</li>
+                                                                <li><span class="span-info"><i class="glyphicon glyphicon-comment"></i> Skype:</span> jyotirmay9</li>
+                                                                <li><span class="span-info"><i class="glyphicon glyphicon-thumbs-up"></i> G. Drive:</span> senapati.jyotirmaygmail.com</li>
                                                             </ul>
                                                         </div>
                                                         <!-- /Contact Info -->
@@ -2021,16 +1916,14 @@ updatecustomercount();
                                                             <div class="clear"></div>
                                                         </div>
 
-                                                    
-
-                                                            <div id="profile_social">
-                                                                <a href="https://www.facebook.com/Shaan.Exile" target="_blank"><i class="fa fa-facebook"></i></a>
-                                                                <a href="https://twitter.com/Shaan_143" target="_blank"><i class="fa fa-twitter"></i></a>
-                                                                <a href="https://www.linkedin.com/profile/view?id=75009462" target='_blank' ><i class="fa fa-linkedin"></i></a>
-                                                                <a href="#"><i class="fa fa fa-dribbble" target="_blank"></i></a>
-                                                                <a href="#"><i class="fa fa-foursquare" target="_blank"></i></a>
-                                                                <div class="clear"></div>
-                                                            </div>
+                                                        <div id="profile_social">
+                                                            <a href="https://www.facebook.com/Shaan.Exile" target="_blank"><i class="fa fa-facebook"></i></a>
+                                                            <a href="https://twitter.com/Shaan_143" target="_blank"><i class="fa fa-twitter"></i></a>
+                                                            <a href="https://in.linkedin.com/in/jyotirmay-senapati-30615421" target='_blank' ><i class="fa fa-linkedin"></i></a>
+                                                            <a href="https://github.com/jyotirmay123" target="_blank"><i class="fa fa fa-github"></i></a>
+                                                            <a href="http://stackoverflow.com/users/3861545/jyotirmay" target="_blank"><i class="fa fa fa-stack-overflow"></i></a>
+                                                            <div class="clear"></div>
+                                                        </div>
                                               
 
 
@@ -2050,7 +1943,7 @@ updatecustomercount();
 
                                                             <div id="contact-status"></div>
 
-                                                            <form action="" id="contactform">
+                                                            <form method="post" action="" id="contactform">
                                                                 <p class="form-group" id="contact-name">
                                                                     <label for="name">Your Name</label>
                                                                     <input type="text" name="name" class="form-control name-contact" id="inputSuccess" placeholder="Name..." />
@@ -2104,10 +1997,10 @@ updatecustomercount();
 
         </div>
         <!-- End wrapper -->
-	<div id="geo" class="geolocation_data"></div>
+	<!--div id="geo" class="geolocation_data"></div-->
 		
         <!-- Switcher -->
-        <div id="custumize-style">
+        <!--div id="custumize-style">
             <h2>Style Selector<a href="#" class="switcher"><i class="fa fa-cogs icon-switcher"></i></a></h2>
             <div>
                 <h3>Theme Color</h3>
@@ -2226,7 +2119,7 @@ updatecustomercount();
             </div>
 
             <div id="button-reset"><a href="#" class="button color blue boxed">Reset</a></div>
-        </div>
+        </div-->
         <!-- End Switcher -->
 
 
@@ -2271,7 +2164,8 @@ updatecustomercount();
         
         <!-- Js | gmaps -->
         <!-- Credits: http://maps.google.com/maps/api/js?sensor=true-->
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyd06iE1f8CMwj4cXExgbZC18QkN7HN1A"
+          type="text/javascript"></script>
         <script type="text/javascript" src="js/gmaps.min.js"></script>
 
  		<!-- Js | Js -->
@@ -2323,6 +2217,11 @@ updatecustomercount();
 
             }
 
+            var marker;
+
+            $(document).ready(function(){
+               
+            });
         </script>
 
 

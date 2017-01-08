@@ -10,6 +10,12 @@
     }
 }
 
+/* Added by JJ */
+.error-send{
+	display:none;
+}
+
+
 #preloader {
     position: fixed;
     width: 100%;
