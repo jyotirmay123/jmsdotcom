@@ -149,7 +149,7 @@ jQuery(document).ready(function($) {
 
     }
 
-    // On lie l'événement resize �  la fonction
+    // On lie l'événement resize �  la fonction
     window.addEventListener('load', redimensionnement, false);
     window.addEventListener('resize', redimensionnement, false);
 
@@ -298,18 +298,18 @@ jQuery(document).ready(function($) {
     function initialize() {
         map = new GMaps({
             div: '#map',
-            lat: -37.817917,
-            lng: 144.965065,
-            zoom: 16
+            lat: 12.9572068,
+            lng: 77.7384028,
+            zoom: 13
 
         });
         map.addMarker({
-            lat: -37.81792,
-            lng: 144.96506,
+            lat: 12.9572068,
+            lng: 77.7384028,
             title: 'Marker with InfoWindow',
             icon: 'images/map-marker.png',
             infoWindow: {
-                content: '<p>Melbourne Victoria, 300, Australia</p>'
+                content: '<p>Ramagondanahalli, Bengaluru, India</p>'
             }
         });
     }

@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
         <meta name="description" content="JJ- My Personal Website!"/>
+        <link href="images/myblog.ico" rel="icon" type="image/x-icon" />
         <!--script type="text/JavaScript" src="lib/geo/geo.js"></script-->
         <!-- CSS | bootstrap -->
         <!-- Credits: http://getbootstrap.com/ -->
@@ -202,7 +203,7 @@
         </li>
 
         <a href="file/My_resume.pdf" target="_blank" id="print"><i class="fa fa-print icon_print"></i> </a>
-        <a href="download_resume.php" id="downlowd"><i class="fa fa-download icon_print"></i> </a>
+        <a href="php/download_resume.php" id="downlowd"><i class="fa fa-download icon_print"></i> </a>
     </ul>
     <!-- /resp-tabs-list -->
 
@@ -417,7 +418,7 @@
         </div>
         <div class="col-md-6">
             <!-- .download_resume -->
-            <a class="download" style="margin:0;float: right;" href="download_resume.php" target="_blank">
+            <a class="download" style="margin:0;float: right;" href="php/download_resume.php" target="_blank">
                 <span data-hover="Download"><i class="glyphicon glyphicon-download-alt"></i> My Resume </span>
             </a>
             <!-- /.download_resume -->
