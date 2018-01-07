@@ -1,2233 +1,812 @@
+
+<?php
+   require_once "config.php";
+   $db = mysqli_connect($local->host, $local->user, $local->pass);
+   if($db) {
+       mysqli_select_db($db, $local->select_db);
+   } else {
+       echo "Cannot contact now, some issue!- Error code - 1";
+       return;
+   }
+   
+   $sql = "SELECT * FROM profile";
+   $result = mysqli_query($db, $sql);
+   if ($result->num_rows > 0) {
+       // output data of each row
+       $prof = $result->fetch_assoc();
+   } else {
+       echo "<pre style='color:red;'>No Data in the database.</pre>";
+   }
+   $sql = "SELECT * FROM `resume`";
+   $res = mysqli_query($db, $sql);
+   $cv = $res->fetch_assoc();
+   ?>
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-
-        <title>Jyotirmay Senapati</title>
-
-        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-        <meta name="description" content="JJ- My Personal Website!"/>
-        <link href="images/myblog.ico" rel="icon" type="image/x-icon" />
-        <!--script type="text/JavaScript" src="lib/geo/geo.js"></script-->
-        <!-- CSS | bootstrap -->
-        <!-- Credits: http://getbootstrap.com/ -->
-        <link  rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-
-        <!-- CSS | font-awesome -->
-        <!-- Credits: http://fortawesome.github.io/Font-Awesome/icons/ -->
-        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
-
-        <!-- CSS | animate -->
-        <!-- Credits: http://daneden.github.io/animate.css/ -->
-        <link rel="stylesheet" type="text/css" href="css/animate.min.css" />
-
-        <!-- CSS | Normalize -->
-        <!-- Credits: http://manos.malihu.gr/jquery-custom-content-scroller -->
-        <link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.css" />
-       	
-        <!-- CSS | Colors -->
-        <link rel="stylesheet" type="text/css" href="css/colors/DarkBlue.css" id="colors-style" />
-        <link rel="stylesheet" type="text/css" href="css/switcher.css" />
-        
-        <!-- CSS | Style -->
-        <!-- Credits: http://themeforest.net/user/FlexyCodes -->
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
-
-        <!-- CSS | prettyPhoto -->
-        <!-- Credits: http://www.no-margin-for-errors.com/ -->
-        <link rel="stylesheet" type="text/css" href="css/prettyPhoto.css"/> 
-
-		<!-- CSS | Google Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
-        <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="images/favicon/favicon.ico">
-
-        <!--[if IE 7]>
-                <link rel="stylesheet" type="text/css" href="css/icons/font-awesome-ie7.min.css"/>
-        <![endif]-->
-
-        <style>
-            @media only screen and (max-width : 991px){
-                .resp-vtabs .resp-tabs-container {
-                    margin-left: 13px;
-                }
-            }
-			
-			@media only screen and (min-width : 800px) and (max-width : 991px){
-                .resp-vtabs .resp-tabs-container {
-                    margin-left: 13px;
-					width:89%;
-                }
-            }		
-
-        </style>
-
-    </head>
-
-    <body>
-		
-        <!--[if lt IE 7]>
-                <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <!-- Laoding page -->
-        <div id="preloader"><div id="spinner"></div></div>
-
-        <!-- .slideshow -->
-        <ul class="cb-slideshow" id="cb_slideshow" style="display:none">
-            <li><span>Image 01</span><div></div></li>
-            <li><span>Image 02</span><div></div></li>
-            <li><span>Image 03</span><div></div></li>
-            <li><span>Image 04</span><div></div></li>
-            <li><span>Image 05</span><div></div></li>
-            <li><span>Image 06</span><div></div></li>
-        </ul> 
-        <!-- /.slideshow --> 
-
-        <!-- .wrapper --> 
-        <div class="wrapper">
-
-            <!--- .Content --> 
-            <section class="tab-content">
-                <div class="container">
-
-                    <div class="row">
-
+<!--[if lt IE 7]>      
+<html class="no-js lt-ie9 lt-ie8 lt-ie7">
+   <![endif]-->
+   <!--[if IE 7]>         
+   <html class="no-js lt-ie9 lt-ie8">
+      <![endif]-->
+      <!--[if IE 8]>         
+      <html class="no-js lt-ie9">
+         <![endif]-->
+         <!--[if gt IE 8]><!--> 
+         <html class="no-js">
+            <!--<![endif]-->
+            <head>
+               <title><?php echo $prof["firstname"]." ".$prof["lastname"]; ?></title>
+               <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+               <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+               <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+               <meta name="description" content="JJ- My Personal Website!"/>
+               <link href="contents/images/jj.ico" rel="icon" type="image/x-icon" />
+               <!-- CSS | bootstrap -->
+               <!-- Credits: http://getbootstrap.com/ -->
+               <link  rel="stylesheet" type="text/css" href="contents/css/bootstrap.min.css" />
+               <!-- CSS | font-awesome -->
+               <!-- Credits: http://fortawesome.github.io/Font-Awesome/icons/ -->
+               <link rel="stylesheet" type="text/css" href="contents/css/font-awesome.min.css" />
+               <!-- CSS | animate -->
+               <!-- Credits: http://daneden.github.io/animate.css/ -->
+               <link rel="stylesheet" type="text/css" href="contents/css/animate.min.css" />
+               <!-- CSS | Normalize -->
+               <!-- Credits: http://manos.malihu.gr/jquery-custom-content-scroller -->
+               <link rel="stylesheet" type="text/css" href="contents/css/jquery.mCustomScrollbar.css" />
+               <!-- CSS | Colors -->
+               <link rel="stylesheet" type="text/css" href="contents/css/colors/DarkBlue.css" id="colors-style" />
+               <link rel="stylesheet" type="text/css" href="contents/css/switcher.css" />
+               <!-- CSS | Style -->
+               <!-- Credits: http://themeforest.net/user/FlexyCodes -->
+               <link rel="stylesheet" type="text/css" href="contents/css/main.css" />
+               <!-- CSS | prettyPhoto -->
+               <!-- Credits: http://www.no-margin-for-errors.com/ -->
+               <link rel="stylesheet" type="text/css" href="contents/css/prettyPhoto.css"/>
+               <!-- CSS | Google Fonts -->
+               <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+               <!-- Favicon -->
+               <link rel="shortcut icon" type="image/x-icon" href="contents/images/jj.ico">
+               <!--[if IE 7]>
+               <link rel="stylesheet" type="text/css" href="contents/css/icons/font-awesome-ie7.min.css"/>
+               <![endif]-->
+               <style>
+                  @media only screen and (max-width : 991px){
+                  .resp-vtabs .resp-tabs-container {
+                  margin-left: 13px;
+                  }
+                  }
+                  @media only screen and (min-width : 800px) and (max-width : 991px){
+                  .resp-vtabs .resp-tabs-container {
+                  margin-left: 13px;
+                  width:89%;
+                  }
+                  }        
+               </style>
+            </head>
+            <body>
+               <!--[if lt IE 7]>
+               <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+               <![endif]-->
+               <!-- Loading fb sdk-->
+               <div id="fb-root"></div>
+               <!-- Laoding page -->
+               <div id="preloader">
+                  <div id="spinner"></div>
+               </div>
+               <!-- .wrapper --> 
+               <div class="wrapper">
+               <!--- .Content --> 
+               <section class="tab-content">
+                  <div class="container">
+                     <div class="row">
                         <div class="col-md-12">
-
-                            <div class="row">   
-
-                                <div class="col-md-3 widget-profil">
-                                    <div class="row">
-
-    <!-- Profile Image -->
-    <div class="col-lg-12 col-md-12 col-sm-3 col-xs-12 ">
-    	 
-		 
-                                
-         <div class="image-holder one" id="pic_prof_1" style="display:block">
-        
-                <!--img class="head-image up circle" src="images/img/up.png" width="150" height="150" alt="" /!-->
-                <img class="head-image up-left circle" src="images/img/upleft.png" width="150" height="150" alt="" />
-                <!--img class="head-image left circle" src="images/img/left.png" width="150" height="150" alt="" />
-                <img class="head-image down-left circle" src="images/img/downleft.png" width="150" height="150" alt="" />
-                <img class="head-image down circle" src="images/img/down.png" width="150" height="150" alt="" />
-                <img class="head-image down-right circle" src="images/img/downright.png" width="150" height="150" alt="" />
-                <img class="head-image right circle" src="images/img/right.png" width="150" height="150" alt="" />
-                <img class="head-image up-right circle" src="images/img/upright.png" width="150" height="150" alt="" />
-                <img class="head-image front circle" src="images/img/front.png" width="150" height="150" alt="" /!-->
-                
-        </div>
-        
-        <!-- style for simple image profile -->		
-   		<div class="circle-img" id="pic_prof_2" style="display:none"></div>
-       
-    
-    </div>
-    <!-- End Profile Image -->
-  
-    <div class="col-lg-12 col-md-12 col-sm-9 col-xs-12">
-    
-    
-        <!-- Profile info -->
-        <div id="profile_info">
-            <h1 id="name" class="transition-02">jyotirmay</h1>
-            <h4 class="line">Software Engineer</h4>
-            <h6><span class="fa fa-map-marker"></span> Bangalore, INDIA</h6>
-        </div>
-        <!-- End Profile info -->  
-    	
-        
-        <!-- Profile Description -->
-        <div id="profile_desc">
-            <p>
-                A PHP and JavaScript enthusiast. Worked on various XAMPP and MEAN stack based Web and Mobile application.
-            </p>
-            <p>
-                Love to read books, play badminton and an extrovert by heart. <i class="fa fa-smile-o" aria-hidden="true"></i>
-            </p>  
-        </div>
-        <!-- End Profile Description -->  
-    	
-        
-        <!-- Name -->
-         <div id="profile_social">
-            <h6>My Social Profiles</h6>
-            <a href="https://www.facebook.com/Shaan.Exile" target="_blank"><i class="fa fa-facebook"></i></a>
-            <a href="https://twitter.com/Shaan_143" target="_blank"><i class="fa fa-twitter"></i></a>
-            <a href="https://in.linkedin.com/in/jyotirmay-senapati-30615421" target='_blank' ><i class="fa fa-linkedin"></i></a>
-            <a href="https://github.com/jyotirmay123" target="_blank"><i class="fa fa fa-github"></i></a>
-            <a href="http://stackoverflow.com/users/3861545/jyotirmay" target="_blank"><i class="fa fa fa-stack-overflow"></i></a>
-            <div class="clear"></div>
-        </div>
-        <!-- End Name -->  
-
-    </div>
-  </div>                                
-</div>
-
-<div class="col-md-9 flexy_content" style="padding-left: 0;padding-right: 0;">
-
-<!-- verticalTab menu -->
-<div id="verticalTab">
-
-    <ul class="resp-tabs-list">
-        <li class="tabs-profile hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a profile" data-tab-name="profile">			
-            <span class="tite-list">profile</span>
-            <i class="fa fa-user icon_menu icon_menu_active"></i>
-        </li>
-
-        <li class="tabs-resume hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="resume"> 
-            <span class="tite-list">resume</span>
-            <i class="fa fa-tasks icon_menu"></i>
-        </li>
-
-        <li class="tabs-portfolio hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="portfolio"> 
-            <span class="tite-list">portfolio</span>
-            <i class="fa fa-briefcase icon_menu"></i>
-        </li>
-
-        <li class="tabs-blog hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="blog">
-            <span class="tite-list">blog</span>
-            <i class="fa fa-bullhorn icon_menu"></i>
-        </li>
-
-        <li class="tabs-contact hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="contact" style="margin-bottom: 48px !important;"> 
-            <span class="tite-list">contact</span>
-            <i class="fa fa-envelope icon_menu"></i> 
-        </li>
-
-        <a href="file/My_resume.pdf" target="_blank" id="print"><i class="fa fa-print icon_print"></i> </a>
-        <a href="php/download_resume.php" id="downlowd"><i class="fa fa-download icon_print"></i> </a>
-    </ul>
-    <!-- /resp-tabs-list -->
-
-
-<!-- resp-tabs-container --> 
-<div class="resp-tabs-container">
-
-    <!-- profile -->
-    <div id="profile" class="content_2">
-        <!-- .title -->
-<h1 class="h-bloc">Profile - About Me</h1>
-
-<div class="row top-p">
-    <div class="col-md-6 profile-l">
- 		
-        <!--About me-->
-        <div class="title_content">
-            <div class="text_content">jyotirmay</div>
-            <div class="clear"></div>
-        </div>
-
-		   <ul class="about">
-
-            <li>
-                <i class="glyphicon glyphicon-user"></i>
-                <label>Name</label>
-                <span class="value">Jyotirmay Senapati</span>
-                <div class="clear"></div>
-            </li>
-
-            <li>
-                <i class="glyphicon glyphicon-calendar"></i>
-                <label>Date of birth</label>
-                <span class="value">February 12, 1992</span>
-                <div class="clear"></div>
-            </li>
-
-            <li> 
-                <i class="glyphicon glyphicon-map-marker"></i>
-                <label>Adress</label>
-                <span class="value">Bangalore , India</span>
-                <div class="clear"></div>
-            </li>
-
-            <li>
-                <i class="glyphicon glyphicon-envelope"></i>
-                <label>Email</label>
-                <span class="value">mail@jyotirmaysenapati.com</span>
-                <div class="clear"></div>
-            </li>
-
-            <li>
-                <i class="glyphicon glyphicon-phone"></i>
-                <label>Phone</label>
-                <span class="value">+91 9632555479</span>
-                <div class="clear"></div>
-            </li>
-
-            <li>
-                <i class="glyphicon glyphicon-globe"></i>
-                <label>Website</label>
-                <span class="value"><a href="http://jyotirmaysenapati.com" target="_blank">www.jyotirmaysenapati.com</a></span>
-                <div class="clear"></div>
-            </li>
-
-        </ul>
-
-
-        <p style="margin-bottom:20px">
-            <i class="fa fa-quote-left"></i>       
-                Hey guys, I am Jyotirmay, fondly called as "JJ" by my close ones. Born and brought up in Baripada, a small town
-                in Mayurbhanj district of Odisha, India.
-                Currently, I am staying in Bangalore. I teach PHP and JavaScript.
-            </p>
-            <p style="margin-bottom:20px">
-            <i class="fa fa-quote-left"></i>       
-                Writes blog and loves to motivate young people pouring into IT. 
-                Please contact me, if you need any help on above contacts.
-            </p>
-    </div>
-    <!-- End left-wrap -->
-
-    <div class="col-md-6 profile-r">
-
-        <div class="cycle-slideshow">
-            <img src="images/img-profile/about_1.jpg" alt="" />
-            <img src="images/img-profile/about_2.png" alt="" />
-            <img src="images/img-profile/about_3.png" alt="" />
-        </div>
-
-    </div>
-
-</div>
-
-    <div class="clear"></div>
-
-
-    <div class="row" id="services">
-		<!--div class="col-md-12">
-            <div class="title_content">
-                <div class="text_content">My Services 1</div>
-                <div class="clear"></div>
-            </div>
-    
-    
-            <div class="col-md-4 pack-service">
-                <div class="service">
-                    <div class="service-icon"><i class="fa fa-tag"></i></div>
-                    <div class="service-detail">
-                        <h6>Making Money</h6>
-                        <p>Fusce quis interdum ipsum.Suspendi suscipit vehicula sapienid mattis. Lorem ipsum amet consectetur.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 pack-service">
-                <div class="service">
-                    <div class="service-icon"><i class="fa fa-cogs"></i></div>
-                    <div class="service-detail">
-                        <h6>Easy to Customize</h6>
-                        <p>Fusce quis interdum ipsum.Suspendi suscipit vehicula sapienid mattis. Lorem ipsum amet consectetur.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 pack-service">
-                <div class="service">
-                    <div class="service-icon"><i class="fa fa-arrows-alt"></i></div>
-                    <div class="service-detail">
-                        <h6>Moving Let Us Help</h6>
-                        <p>Fusce quis interdum ipsum.Suspendi suscipit vehicula sapienid mattis. Lorem ipsum amet consectetur.</p>
-                    </div>
-                </div>
-            </div>
-         </div> 
-    </div--><!-- End Services -->
-
-
-    <!--div class="clear"></div>
-    <div class="border-list"></div>
-	
-    <div class="row">
-    <div class="col-md-12">
-        <div class="bottom-p">
-            <div class="title_content">
-                <div class="text_content">My Services 2</div>
-                <div class="clear"></div>
-            </div>
-    
-            <div class="panel-group" id="accordion">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapse_tabs">
-                                Making Money
-                                <i class="glyphicon glyphicon-chevron-up" style="float: right;font-size: 13px;"></i>
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseOne" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                            <i class="fa fa-quote-left"></i>  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapse_tabs">
-                                Easy to Customize
-                                <i class="glyphicon glyphicon-chevron-down" style="float: right;font-size: 13px;"></i>
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseTwo" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <i class="fa fa-quote-left"></i>  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapse_tabs">
-                                Moving Let Us Help
-                                <i class="glyphicon glyphicon-chevron-down" style="float: right;font-size: 13px;"></i>
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseThree" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <i class="fa fa-quote-left"></i>  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-        </div>
- </div-->
- 
- 
-  </div>
-    <div class="clear"></div>
-</div>
-<!-- End .profile -->
-
-<!-- .resume -->
-<div id="resume" class="content_2">
-
-    <div class="row">
-        <div class="col-md-6">
-            <!-- .title -->
-            <h1 class="h-bloc">Resume - Personal Info</h1> 
-        </div>
-        <div class="col-md-6">
-            <!-- .download_resume -->
-            <a class="download" style="margin:0;float: right;" href="php/download_resume.php" target="_blank">
-                <span data-hover="Download"><i class="glyphicon glyphicon-download-alt"></i> My Resume </span>
-            </a>
-            <!-- /.download_resume -->
-        </div>
-    </div>
-     
-     
-     <div class="row">
-     <!-- .resume-top -->
-    <div class="col-md-12 resume-left">    
-        <!-- .title_content -->
-        <div class="title_content" style="margin-bottom:5px">
-            <div class="text_content">Experience</div>
-            <div class="clear"></div>
-        </div>
-        <!-- /.title_content -->
-        
-         <!-- .attributes -->
-        <ul class="attributes">
-            <li class="first">
-                <h5>Technical Solutions Engineer <span class="duration"><i class="fa fa-calendar color"></i> 2016 - Present</span></h5>
-                <h6>
-                    <span class="fa fa-briefcase"></span>
-                    <a href="https://www.pega.com/" target="_blank"> PegaSystems Worldwide India Ltd. Bangalore, India</a>
-                </h6>
-                    <p>	Provide UI specialized consultancy as system architecture consultant to Pega system customers.</p>
-                    <p>Member of Pega technical recruitment panel. </p>
-                    <p>Train new team members on Pega UI Technologies – JavaScript, HTML5 and CSS3. </p> 
-            </li>
-        </ul>
-        <!-- /.attributes -->
-
-        <!-- .attributes -->
-        <ul class="attributes">
-            <li class="first">
-                <h5>System Engineer <span class="duration"><i class="fa fa-calendar color"></i> 2014 - 2016</span></h5>
-                <h6>
-                    <span class="fa fa-briefcase"></span>
-                    <a href="http://www.tcs.com/" target="_blank"> Tata Consultancy Services Ltd. Bangalore, India</a>
-                </h6>
-                    <p>Developed hybrid and web mobile applications for TCS-Qualcomm internal employees using MEAN stack.</p>
-                    <p>Analyzed around 150+ database tables for data migration of 20 lakhs+ business data.</p>
-                    <p>Developed Learning Management System for Qualcomm using Moodle framework.</p>
-            </li>
-        </ul>
-        <!-- /.attributes -->
-        <br>
-        
-        <!-- .title_content -->
-        <div class="title_content">
-            <div class="text_content">Education</div>
-            <div class="clear"></div>
-        </div>
-        <!-- /.title_content -->
-        
-        <!-- .attributes -->
-        <ul class="attributes">
-            <li  class="first">
-                <h5>Bachelor of Engineering <span class="duration"><i class="fa fa-calendar color"></i> 2009 - 2013</span></h5>
-                <h6>
-                    <span class="fa fa-book"></span>
-                    <a href="http://www.giet.edu" target="_blank"> Gandhi Institute of Engineering and Tech. Gunupur, Odisha, India</a>
-                </h6>
-                <p>Completed Bachelors under Biju Patnaik University of Technology. <a href="http://www.bput.ac.in/" target="_blank">(BPUT)</a>.</p>
-                <p>Secured 8.26 CGPA out of 10.</p>
-            </li>
-            <li>
-                <h5>Intermediate <span class="duration"><i class="fa fa-calendar color"></i> 2007 - 2009</span></h5>
-                <h6>
-                    <span class="fa fa-book"></span>
-                    <a href="http://www.mpcautocollege.org.in/" target="_blank"> Maharaja Purna Chandra Jr. College, Baripada, Odisha, India</a>
-                </h6>
-                <p>Completed Intermediate in Science(PSMB) with first division.</p>
-            </li>
-            <li>
-                <h5>Schooling & Matriculation <span class="duration"><i class="fa fa-calendar color"></i> 2002 - 2007</span></h5>
-                <h6>
-                    <span class="fa fa-book"></span>
-                    <a href="http://www.jnvmayurbhanj.org/" target="_blank">Jawahar Navodaya Vidyalaya, Salbani, Odisha, India</a>
-                </h6>
-                <p>Completed Schooling and Matriculation in JNV and secured 87.6%.</p>
-            </li>
-        </ul>
-        <!-- /.attributes -->
-        <br>  
-        
-        
-          <!-- .title_content 
-        <div class="title_content">
-            <div class="text_content">Awards</div>
-            <div class="clear"></div>
-        </div>
-        <!-- /.title_content -->
-        
-        <!-- .attributes 
-        <ul class="attributes">
-            <li class="first">
-                <h5>Graphic &amp; Art Direction <span class="duration"><i class="fa fa-calendar color"></i> 2013 - 2014</span></h5>
-                <h6><span class="fa fa-trophy"></span> Name of Institute</h6>
-                <p>Emi Phasellus congue auctor risuspon, eget males. Pellentes que un imperdiet, odio quis orn sollicitud. Sed vitae lectus elementum mauris.</p>
-            </li>
-            <li>
-                <h5>Design &amp; Art Direction <span class="duration"><i class="fa fa-calendar color"></i> 2012 - 2013</span></h5>
-                <h6><span class="fa fa-trophy"></span> Name of Institute</h6>
-                <p>Emi Phasellus congue auctor risuspon, eget males. Pellentes que un imperdiet, odio quis orn sollicitud. Sed vitae lectus elementum mauris.</p>
-            </li>
-  
-        </ul>
-        <!-- /.attributes -->
-        <br>  
-        
-    </div>
-    <!-- /.resume-top -->
-
-    <div class="row">
-
-   <!-- .resume-bottom -->
-    <div class="col-md-6" style="padding-left: 30px;">
-        <!-- .title_content -->
-        <div class="title_content" style="float: none;">
-            <div class="text_content">Programming Skills</div>
-            <div class="clear"></div>
-        </div>
-        <!-- /.title_content -->
-        
-        <div class="skills">
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="70%">
-                <div class="skillbar-title"><span>PHP</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">70%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="70%">
-                <div class="skillbar-title"><span>JavaScript</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">70%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="75%">
-                <div class="skillbar-title"><span>MySQL</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">75%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-             <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="60%">
-                <div class="skillbar-title"><span>Angular-2</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">60%</div>
-            </div>
-            <!-- /.skillbar --> 
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="50%">
-                <div class="skillbar-title"><span>Java</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">50%</div>
-            </div>
-            <!-- /.skillbar --> 
-        </div>
-
-        <!-- .title_content -->
-        <div class="title_content" style="float: none;">
-            <div class="text_content">Language Skills</div>
-            <div class="clear"></div>
-        </div>
-        <!-- /.title_content -->
-        
-        <div class="skills">
-            <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="75%">
-                <div class="skillbar-title"><span>English</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">75%</div>
-            </div>
-            <!-- /.skillbar -->
-
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="90%">
-                <div class="skillbar-title"><span>Odia</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">90%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="80%">
-                <div class="skillbar-title"><span>Hindi</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">80%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="50%">
-                <div class="skillbar-title"><span>Bengali</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">50%</div>
-            </div>
-            <!-- /.skillbar -->
-
-             <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="40%">
-                <div class="skillbar-title"><span>German</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">40%</div>
-            </div>
-            <!-- /.skillbar -->
-        </div>
-    </div>
-    <div class="col-md-6">
-         <!-- .title_content -->
-        <div class="title_content" style="float: none;">
-            <div class="text_content">Designs skills</div>
-            <div class="clear"></div>
-        </div>
-        <!-- /.title_content -->
-        
-        <div class="skills">
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="45%">
-                <div class="skillbar-title"><span>Photoshop</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">45%</div>
-            </div>
-            <!-- /.skillbar -->
-        </div>
-
-
-        <!-- .title_content -->
-        <div class="title_content" style="float: none;">
-            <div class="text_content">Office Skills</div>
-            <div class="clear"></div>
-        </div>
-        <!-- /.title_content -->
-            
-        <div class="skills">       
-            <!-- .skillbar -->
-            <div class="skillbar clearfix" data-percent="55%">
-                <div class="skillbar-title"><span>MS Excel</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">55%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="65%">
-                <div class="skillbar-title"><span>MS Word</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">65%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="70%">
-                <div class="skillbar-title"><span>Powerpoint</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">70%</div>
-            </div>
-            <!-- /.skillbar -->
-              
-		</div>
-        
-        
-        <!-- .title_content -->
-        <div class="title_content" style="float: none;">
-            <div class="text_content">Hobbies Skills</div>
-            <div class="clear"></div>
-        </div>
-        <!-- /.title_content -->
-        
-        <div class="skills">
-            <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="70%">
-                <div class="skillbar-title"><span>Sport</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">70%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="80%">
-                <div class="skillbar-title"><span>Reading</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">80%</div>
-            </div>
-            <!-- /.skillbar -->
-            
-            <!-- .skillbar -->
-            <div class="skillbar clearfix " data-percent="90%">
-                <div class="skillbar-title"><span>Travelling</span></div>
-                <div class="skillbar-bar"></div>
-                <div class="skill-bar-percent">90%</div>
-            </div>
-            <!-- /.skillbar -->
-        </div>
-        </div>
-     <!-- /.resume-bottom -->
-     </div>
-</div>
-
-  <div style="clear: both"></div>  
-  
-  
-<!-- client reference -->
-<!--div class="row">
-    <div class="col-md-12">   
-    
-<div class="reference clearfix"--> 
-            
-         <!-- .title_content -->
-        <!--div class="title_content" style="margin-bottom:5px">
-            <div class="text_content">Client reference</div>
-            <div class="clear"></div>
-        </div-->
-        <!-- /.title_content -->
-        
-
-        <!--ul>
-            <li class="clearfix">
-                <img src="http://placehold.it/100x100" class="img_reference" width="100" height="100" alt="">
-                <p>â€œMany desktop publishing packages and web page editors now use Lorem Ipsum as their default will model text, and a search for 'lorem ipsum' hope is uncover many web sites stillâ€�</p>
-                <span>John Doe, UX Designer</span>
-            </li>
-            <li class="clearfix">
-                <img src="http://placehold.it/100x100" class="img_reference" width="100" height="100" alt="">
-                <p>â€œvery nice colleague she always helped me out if i didnt know something editors now use Lorem Ipsum as their defaultâ€�</p>
-                <span>Leia Calvi, UX Designer</span>
-            </li>
-            <li class="clearfix">
-                <img src="http://placehold.it/100x100" class="img_reference" width="100" height="100" alt="">
-                <p>â€œold colleague and now close friend, she is really sweet and helpfull packages and web page editors now use Lorem Ipsum as their default will model textâ€�</p>
-                <span>Maria Callas, UX Designer</span>
-            </li>
-        </ul>
-</div>
- </div>
-     
-     
-     
-     
-     <div style="clear: both"></div>   
-</div-->
-
-                                            </div>
-                                            <!-- End .resume -->
-
-                                            <!-- .portfolio -->
-                                            <div id="portfolio" class="content_2">
-                                                
+                           <div class="row">
+                              <div class="col-md-3 widget-profil">
+                                 <div class="row">
+                                    <!-- Profile Image -->
+                                    <div class="col-lg-12 col-md-12 col-sm-3 col-xs-12 ">
+                                       <div class="image-holder one" id="pic_prof_1" style="display:block">
+                                          <img class="head-image up-left circle" src="contents/images/img/<?php echo $prof["mainpic"]; ?>" width="150" height="150" alt="" />
+                                       </div>
+                                    </div>
+                                    <!-- End Profile Image -->
+                                    <div class="col-lg-12 col-md-12 col-sm-9 col-xs-12">
+                                       <!-- Profile info -->
+                                       <div id="profile_info">
+                                          <h1 id="name" class="transition-02"><?php echo $prof["firstname"]; ?></h1>
+                                          <h4 class="line"><?php echo $prof["currentrole"]; ?></h4>
+                                          <h4 class="line"><?php echo $prof["currentrolein"]; ?></h4>
+                                          <h6><span class="fa fa-map-marker"></span> <?php echo $prof["address"]; ?></h6>
+                                       </div>
+                                       <!-- End Profile info -->  
+                                       <!-- Profile Description -->
+                                       <div id="profile_desc">
+                                          <p>
+                                             <?php echo $prof["majorcommonabout"]; ?>
+                                          </p>
+                                          <p>
+                                             <?php echo $prof["minorcommonabout"]; ?><i class="fa fa-smile-o" aria-hidden="true"></i>
+                                          </p>
+                                       </div>
+                                       <!-- End Profile Description -->  
+                                       <!-- Name -->
+                                       <div id="profile_social">
+                                          <h6>My Social Profiles</h6>
+                                          <a href=<?php echo $prof["fblink"]; ?> target="_blank"><i class="fa fa-facebook"></i></a>
+                                          <a href=<?php echo $prof["twitterlink"]; ?> target="_blank"><i class="fa fa-twitter"></i></a>
+                                          <a href=<?php echo $prof["linkedinlink"]; ?> target='_blank' ><i class="fa fa-linkedin"></i></a>
+                                          <a href=<?php echo $prof["githublink"]; ?> target="_blank"><i class="fa fa fa-github"></i></a>
+                                          <a href=<?php echo $prof["stackoverflowlink"]; ?> target="_blank"><i class="fa fa fa-stack-overflow"></i></a>
+                                          <div class="clear"></div>
+                                       </div>
+                                       <!-- End Name -->  
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-9 flexy_content" style="padding-left: 0;padding-right: 0;">
+                                 <!-- verticalTab menu -->
+                                 <div id="verticalTab">
+                                    <ul class="resp-tabs-list">
+                                       <li class="tabs-profile hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a profile" data-tab-name="profile">            
+                                          <span class="tite-list">profile</span>
+                                          <i class="fa fa-user icon_menu icon_menu_active"></i>
+                                       </li>
+                                       <li class="tabs-resume hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="resume"> 
+                                          <span class="tite-list">resume</span>
+                                          <i class="fa fa-tasks icon_menu"></i>
+                                       </li>
+                                       <li class="tabs-portfolio hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="portfolio"> 
+                                          <span class="tite-list">projects</span>
+                                          <i class="fa fa-briefcase icon_menu"></i>
+                                       </li>
+                                       <li class="tabs-blog hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="blog">
+                                          <span class="tite-list" >blog</span>
+                                          <i class="fa fa-bullhorn icon_menu"></i>
+                                       </li>
+                                       <li class="tabs-contact hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="contact" style="margin-bottom: 48px !important;"> 
+                                          <span class="tite-list">contact</span>
+                                          <i class="fa fa-envelope icon_menu"></i> 
+                                       </li>
+                                       <a href="contents/file/<?php echo $cv["filename"]; ?>" target="_blank" id="print"><i class="fa fa-print icon_print"></i> </a>
+                                       <a href="php/download_resume.php" id="downlowd"><i class="fa fa-download icon_print"></i> </a>
+                                    </ul>
+                                    <!-- /resp-tabs-list -->
+                                    <!-- resp-tabs-container --> 
+                                    <div class="resp-tabs-container">
+                                       <!-- profile -->
+                                       <div id="profile" class="content_2">
+                                          <!-- .title -->
+                                          <h1 class="h-bloc">Profile - About Me</h1>
+                                          <div class="row top-p">
+                                             <div class="col-md-6 profile-l">
+                                                <!--About me-->
+                                                <div class="title_content">
+                                                   <div class="text_content"><?php echo $prof["firstname"]; ?></div>
+                                                   <div class="clear"></div>
+                                                </div>
+                                                <ul class="about">
+                                                   <li>
+                                                      <i class="glyphicon glyphicon-user"></i>
+                                                      <label>Name</label>
+                                                      <span class="value"><?php echo $prof["firstname"]." ".$prof["lastname"]; ?></span>
+                                                      <div class="clear"></div>
+                                                   </li>
+                                                   <li>
+                                                      <i class="glyphicon glyphicon-calendar"></i>
+                                                      <label>Date of birth</label>
+                                                      <span class="value"><?php echo $prof["dob"]; ?></span>
+                                                      <div class="clear"></div>
+                                                   </li>
+                                                   <li>
+                                                      <i class="glyphicon glyphicon-map-marker"></i>
+                                                      <label>Adress</label>
+                                                      <span class="value"><?php echo $prof["address"]; ?></span>
+                                                      <div class="clear"></div>
+                                                   </li>
+                                                   <li>
+                                                      <i class="glyphicon glyphicon-envelope"></i>
+                                                      <label>Email</label>
+                                                      <span class="value"><?php echo $prof["email"]; ?></span>
+                                                      <div class="clear"></div>
+                                                   </li>
+                                                   <li>
+                                                      <i class="glyphicon glyphicon-phone"></i>
+                                                      <label>Phone</label>
+                                                      <span class="value"><?php echo $prof["phone"]; ?></span>
+                                                      <div class="clear"></div>
+                                                   </li>
+                                                   <li>
+                                                      <i class="glyphicon glyphicon-globe"></i>
+                                                      <label>Website</label>
+                                                      <span class="value"><a href=<?php echo $prof["website"]; ?> target="_blank">www.jyotirmays.com</a></span>
+                                                      <div class="clear"></div>
+                                                   </li>
+                                                </ul>
+                                                <p style="margin-bottom:20px">
+                                                   <i class="fa fa-quote-left"></i>       
+                                                   <?php echo $prof["majorabout"]; ?>
+                                                </p>
+                                                <p style="margin-bottom:20px">
+                                                   <i class="fa fa-quote-left"></i>       
+                                                   <?php echo $prof["minorabout"]; ?>
+                                                </p>
+                                             </div>
+                                             <!-- End left-wrap -->
+                                             <div class="col-md-6 profile-r">
+                                                <div class="cycle-slideshow">
+                                                   <?php
+                                                      $pics = array($prof["profilepic1"], $prof["profilepic2"], $prof["profilepic3"], $prof["profilepic4"], $prof["profilepic5"], $prof["profilepic6"]);
+                                                      foreach($pics as $p){
+                                                          if (!empty($p)){
+                                                          ?>
+                                                   <img src="contents/images/img-profile/<?php echo $p ?>" alt="" />
+                                                   <?php
+                                                      }
+                                                      }
+                                                      ?>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="clear"></div>
+                                       </div>
+                                       <!-- End .profile -->
+                                       <?php
+                                          $sql = "SELECT * FROM experience";
+                                          $expr = mysqli_query($db, $sql);
+                                          
+                                          $sql = "SELECT * FROM education";
+                                          $edu = mysqli_query($db, $sql);
+                                          
+                                          $sql = "SELECT * FROM programming";
+                                          $prog = mysqli_query($db, $sql);
+                                          
+                                          $sql = "SELECT * FROM ide";
+                                          $ide = mysqli_query($db, $sql);
+                                          
+                                          $sql = "SELECT * FROM `language`";
+                                          $lang = mysqli_query($db, $sql);
+                                          
+                                          $sql = "SELECT * FROM office";
+                                          $ofc = mysqli_query($db, $sql);
+                                          
+                                          $sql = "SELECT * FROM hobby";
+                                          $hoby = mysqli_query($db, $sql);
+                                          ?>
+                                       <!-- .resume -->
+                                       <div id="resume" class="content_2">
+                                          <div class="row">
+                                             <div class="col-md-6">
                                                 <!-- .title -->
-                                                <h1 class="h-bloc">Portfolio - My Works</h1>
-
-                                               
- <div class="container-portfolio">
-
-  <!-- #filters -->
-  <ul id="filters" class="clearfix">
-        <li><span class="filter active" data-filter="catWeb catGraphic catMotion logo">All</span></li>
-        <li><span class="filter" data-filter="catWeb">PHP</span></li>
-        <li><span class="filter" data-filter="catGraphic">MEAN</span></li>
-        <li><span class="filter" data-filter="catMotion">Angular-2</span></li>
-        <li><span class="filter" data-filter="logo">Other</span></li>
-    </ul>
-    <!-- /#filters -->
-
-    <!-- Mapping>
-    PHP == catweb
-    MEAN == catGraphic
-    Angular-2 == catMotion
-    Other == logo
-    <MApping-->
-
-    <!-- #portfoliolist -->
-    <div id="portfoliolist">
-        
-        <div class="view view-first portfolio catWeb" data-cat="catWeb">
-            <img src="images/portfolio/thumb/1.jpg" />
-            <div class="mask">
-                <h2>Productfeed</h2>
-                <p>A project to transfer data in .csv and .json file into MySQL database.</p>
-                
-                <a href="images/portfolio/1.jpg" rel="portfolio" class="info open-imag">
-                	<i class="fa fa-search"></i>
-                </a>
-                <a href="https://github.com/jyotirmay123/php_productfeed" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
-            </div>
-        </div> 
-        
-        <div class="view view-first portfolio catMotion" data-cat="catMotion">
-            <img src="images/portfolio/thumb/2.jpg" />
-            <div class="mask">
-                <h2>My Blog</h2>
-                <p>An Angular2 and Typescript based BLOG engine.</p>
-                
-                 <a href="images/portfolio/2.jpg" rel="portfolio" class="info open-imag">
-                	<i class="fa fa-search"></i>
-                </a>
-                <a href="https://github.com/jyotirmay123/myblog_1.0" class="info external"><i class="fa fa-link"></i></a> 
-            </div>
-        </div>
-        
-        <div class="view view-first portfolio catWeb" data-cat="catWeb">
-            <img src="images/portfolio/thumb/3.jpg" />
-            <div class="mask">
-                <h2>Moodle</h2>
-                <p>A learning management system built on top of PHP moodle framework.</p>
-                
-                 <a href="images/portfolio/3.jpg" rel="portfolio" class="info open-imag">
-                	<i class="fa fa-search"></i>
-                </a>
-                <a href="https://github.com/jyotirmay123/moodle" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
-            </div>
-        </div> 
-        
-        <div class="view view-first portfolio catGraphic" data-cat="catGraphic">
-            <img src="images/portfolio/thumb/4.jpg" />
-            <div class="mask">
-                <h2>Associate Portal - Client</h2>
-                <p>Client part of Associate Portal app.</p>
-                
-                 <a href="images/portfolio/4.jpg" rel="portfolio" class="info open-imag">
-                	<i class="fa fa-search"></i>
-                </a>
-                <a href="https://github.com/jyotirmay123/aportalweb" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
-            </div>
-        </div>
-        
-        <div class="view view-first portfolio catGraphic" data-cat="catGraphic">
-            <img src="images/portfolio/thumb/5.jpg" />
-            <div class="mask">
-                <h2>Associate Portal - Server</h2>
-                <p>Service layer of Associate Portal app.</p>
-                
-                 <a href="images/portfolio/5.jpg" rel="portfolio" class="info open-imag">
-                	<i class="fa fa-search"></i>
-                </a>
-                <a href="https://github.com/jyotirmay123/aportal" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
-            </div>
-        </div>
-
-        <div class="view view-first portfolio logo" data-cat="logo">
-            <img src="images/portfolio/thumb/6.jpg" />
-            <div class="mask">
-                <h2>Hibernate POC</h2>
-                <p>A POC on Hibernate.</p>
-                
-                 <a href="images/portfolio/6.jpg" rel="portfolio" class="info open-imag">
-                	<i class="fa fa-search"></i>
-                </a>
-                <a href="https://github.com/jyotirmay123/HibernateTemplateEx" target="_blank" class="info external"><i class="fa fa-link"></i></a> 
-            </div>
-        </div>
-    
-        <div class="clear"></div>
-    
-  </div>
-    <!-- #images/portfoliolist -->
-</div>                                            
-</div>
-<!-- End .portfolio -->
-
-<!-- .blog -->
-<div id="blog" class="content_2">
-    <h1 class="h-bloc">Blog - My Blog</h1><br> 
-
-<div class="col-md-12">
-    <div class="row">
-
-        <!-- Page Blog -->
-        <div class="col-md-12" id="blog_page">
-            <!-- start Page Blog -->
-            <section id="blog-page">
-
-                <!-- Post 1 -->	
-                <article id="post-1" class="blog-article">                    
-
-                    <div class="col-md-12">
-
-                        <div class="row">
-
-                            <div class="col-md-12 post_media">
-                                <div class="post-format-icon">
-                                    <a href="#" class="item-date"><span class="fa fa-picture-o"></span></a>
-                                </div>
-                                <div class="media">
-                                    <div class="he-wrap tpl2">
-                                        <div id="carousel-1" class="carousel slide" data-ride="carousel">
-
-                                            <ol class="carousel-indicators">
-                                                <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
-                                                <li data-target="#carousel-1" data-slide-to="1"></li>
-                                                <li data-target="#carousel-1" data-slide-to="2"></li>
-                                            </ol>
-
-                                            <div class="carousel-inner">
-
-                                                <div class="item active">
-                                                    <img src="images/blog/blog-1.jpg" alt="" />
-                                                    <div class="carousel-caption">
-                                                        <h4></h4>
-                                                        <p></p>
-                                                    </div>
+                                                <h1 class="h-bloc">Resume - Personal Info</h1>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <!-- .download_resume -->
+                                                <a class="download" style="margin:0;float: right;" href="php/download_resume.php" target="_blank">
+                                                <span data-hover="Download"><i class="glyphicon glyphicon-download-alt"></i> My Resume </span>
+                                                </a>
+                                                <!-- /.download_resume -->
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <!-- .resume-top -->
+                                             <div class="col-md-12 resume-left">
+                                                <!-- .title_content -->
+                                                <div class="title_content" style="margin-bottom:5px">
+                                                   <div class="text_content">Experience</div>
+                                                   <div class="clear"></div>
                                                 </div>
-
-
-                                                <div class="item">
-                                                    <img src="images/blog/blog-2.jpg" alt="" />
-                                                    <div class="carousel-caption">
-                                                        <h4></h4>
-                                                        <p></p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="item">
-                                                    <img src="images/blog/blog-3.jpg" alt="" />
-                                                    <div class="carousel-caption">
-                                                        <h4></h4>
-                                                        <p></p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <a class="left carousel-control" href="#carousel-1" data-slide="prev">
-                                                <span class="glyphicon glyphicon-chevron-left"></span>
-                                            </a>
-
-                                            <a class="right carousel-control" href="#carousel-1" data-slide="next">
-                                                <span class="glyphicon glyphicon-chevron-right"></span>
-                                            </a>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 post_content">
-                                <div class="content post_format_standart">
-                                    <div class="top_c ">
-
-                                        <div class="title_content">
-                                            <div class="text_content"><a href="http://blog.jyotirmaysenapati.com/#/blog/new?width=800&amp;height=500&amp;iframe=true" target="_blank" class="info external">Yet To Configure Here.</a></div>
-                                            <div class="clear"></div>
-                                        </div>
-
-                                        <!--ul class="info">
-                                            <li><i class="glyphicon glyphicon-comment"></i> 2 Comments</li>
-                                            <li><i class="glyphicon glyphicon-time"></i> January 31, 2014</li>
-                                            <li><i class="glyphicon glyphicon-user"></i> by Jane Doe</li>
-                                            <li><i class="glyphicon glyphicon-tag"></i> jquery, slider, web design</li>
-                                        </ul>
-
-                                        <div class="blog-content">
-                                            <p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo...</p></div-->
-                                    </div>
-                                </div>	
-
-                                <a href="http://blog.jyotirmaysenapati.com" class="download" target="_blank"><span data-hover="My Blog" style="color:white">Click to access myblog here</span></a>
-
-                            </div>
-                        </div>
-
-                    </div-->
-                </article>
-                <!-- End Post 1 -->
-
-                <div class="clear"></div>
-
-                <!-- Post 2 -->
-                <!--article id="post-2" class="blog-article">                    
-
-                    <div class="col-md-12">
-
-                        <div class="row">
-
-                            <div class="col-md-12 post_media">
-
-                                <div class="post-format-icon">
-                                    <a href="#" class="item-date"><span class="fa fa-pencil"></span></a>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 post_content">
-                                <div class="content post_format_standart">
-                                    <div class="top_c ">
-
-                                        <div class="title_content">
-                                            <div class="text_content"><a href="#post-2" class="read_more">Blog Aside post</a></div>
-                                            <div class="clear"></div>
-                                        </div>
-
-                                        <ul class="info">
-                                            <li><i class="glyphicon glyphicon-comment"></i> 2 Comments</li>
-                                            <li><i class="glyphicon glyphicon-time"></i> January 31, 2014</li>
-                                            <li><i class="glyphicon glyphicon-user"></i> by Jane Doe</li>
-                                            <li><i class="glyphicon glyphicon-tag"></i> php, web design</li>
-                                        </ul>
-
-                                        <div class="blog-content">
-                                            <p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo...</p></div>
-                                    </div>
-                                </div>	
-
-                                <a href="#post-2" class="read_m pull-right">Read More <i class='glyphicon glyphicon-chevron-right'></i></a>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </article-->
-                <!-- End Post 2 -->
-
-                <!--div class="clear"></div-->
-
-                <!-- Post 3 -->
-                <!--article id="post-3" class="blog-article">                    
-
-                    <div class="col-md-12">
-
-                        <div class="row">
-
-                            <div class="col-md-12 post_media">
-
-                                <div class="post-format-icon">
-                                    <a href="#" class="item-date"><span class="fa fa-picture-o"></span></a>
-                                </div>
-
-                                <div class="media">
-                                    <div class="he-wrap tpl2">
-                                        <img src="images/blog/blog-4.jpg" class="img-hover" alt="" />
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 post_content">
-                                <div class="content post_format_standart">
-                                    <div class="top_c ">
-
-                                        <div class="title_content">
-                                            <div class="text_content"><a href="#post-3" class="read_more">Blog Post Image</a></div>
-                                            <div class="clear"></div>
-                                        </div>
-
-                                        <ul class="info">
-                                            <li><i class="glyphicon glyphicon-comment"></i> 2 Comments</li>
-                                            <li><i class="glyphicon glyphicon-time"></i> January 31, 2014</li>
-                                            <li><i class="glyphicon glyphicon-user"></i> by Jane Doe</li>
-                                            <li><i class="glyphicon glyphicon-tag"></i> php, web design</li>
-                                        </ul>
-
-                                        <div class="blog-content">
-                                            <p><i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo...</p></div>
-                                    </div>
-                                </div>	
-
-                                <a href="#post-3" class="read_m pull-right">Read More <i class='glyphicon glyphicon-chevron-right'></i></a>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </article-->
-
-                <!-- End Post 3 -->
-
-            </section>
-
-            <!-- End Page Blog -->
-
-
-
-            <!-- Page Blog - Post 1 -->
-            <section id="post-1-page" class="content-post" style="display: none">
-                <div class="row inner">
-
-                    <div class="col-md-12" style="width: 100%;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;float: left;background: rgba(255, 255, 255, 0.8);padding-bottom: 15px;padding-top: 15px;">
-
-                        <article class="postPage">
-
-                            <div class="col-md-12 post_media">
-                                <div class="post-format-icon">
-                                    <a href="#" class="item-date"><span class="fa fa-picture-o"></span></a>
-                                </div>
-                                <div class="media">
-                                    <div class="he-wrap tpl2">
-                                        <div id="carousel-2" class="carousel slide" data-ride="carousel">
-
-                                            <ol class="carousel-indicators">
-                                                <li data-target="#carousel-2" data-slide-to="0" class="active"></li>
-                                                <li data-target="#carousel-2" data-slide-to="1"></li>
-                                                <li data-target="#carousel-2" data-slide-to="2"></li>
-                                            </ol>
-
-                                            <div class="carousel-inner">
-
-                                                <div class="item active">
-                                                    <img src="images/blog/blog-1.jpg" alt="">
-                                                    <div class="carousel-caption">
-                                                        <h4>First Thumbnail label</h4>
-                                                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="item">
-                                                    <img src="images/blog/blog-2.jpg" alt="">
-                                                    <div class="carousel-caption">
-                                                        <h4>First Thumbnail label</h4>
-                                                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="item">
-                                                    <img src="images/blog/blog-3.jpg" alt="">
-                                                    <div class="carousel-caption">
-                                                        <h4>First Thumbnail label</h4>
-                                                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                            <div class="title_content">
-                                <div class="text_content">Blog Post Gallery</div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <p class="caps">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with.</p>
-
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-
-                            <div class="col-md-12 first">
-                                <div class="info">
-                                    <div>
-                                        <span class="tag">#php</span>
-                                        <span class="tag">#web</span>
-                                        <span class="tag">#web design</span>
-                                    </div>
-
-
-                                    <ul class="info-post">
-                                        <li><i class="glyphicon glyphicon-comment"></i> 2 Comments</li>
-                                        <li><i class="glyphicon glyphicon-time"></i> January 31, 2014</li>
-                                        <li><i class="glyphicon glyphicon-user"></i> by Jane Doe</li>
-                                        <li><i class="glyphicon glyphicon-tag"></i> jquery, slider, web design</li>
-                                    </ul>
-                                </div>
-
-                                <div class="clear"></div>      
-
-
-                                <div class="about_author">
-                                    <div class="title_content" style="margin-bottom:10px">
-                                        <div class="text_content">BILL GATES</div>
-                                        <div class="clear"></div>
-                                    </div>
-
-                                    <div class="clear"></div>
-
-                                    <div class="prg_content">
-                                        <img src="http://placehold.it/100x100" width="100" height="100" alt="img">
-
-                                        <div class="text">
-                                            Lorem ipsum dolor sit amet, consectetur
-                                            adipiscing elit. Praesent condimentum sed elit
-                                            vitae tristique. Aliquam erat volutpat. Nunc sit
-                                            amet cursus libero. In fringilla egestas ornare.
-                                        </div>
-
-                                        <div class="nb_post" style="margin-top: 10px;">
-                                            <b id="nb_post"> 15 posts</b> created by author
-                                        </div>
-                                    </div>
-
-                                    <div class="clear"></div>
-                                </div>
-
-                                <div class="clear"></div>      
-
-
-                                <div class="post_comments">
-
-                                    <div class="title_content">
-                                        <div class="text_content">7 Comments</div>
-                                        <div class="clear"></div>
-                                    </div>
-
-                                    <div class="clear"></div>
-
-                                    <div class="comments">
-
-                                        <div class="comment">
-                                            <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                            <div class="text">
-                                                <div class="name">John Doe <a class="reply" href="#">Reply</a></div>
-                                                <div class="date">12, September, 2013</div>
-                                                Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit. Praesent condimentum sed elit
-                                                vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                amet cursus libero. In fringilla egestas ornare.
-                                            </div>
-                                            <div class="comment sub">
-                                                <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                                <div class="text">
-                                                    <div class="name">Bill Gates <a class="reply" href="#">Reply</a></div>
-                                                    <div class="date">12, September, 2013</div>
-                                                    Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing elit. Praesent condimentum sed elit
-                                                    vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                    amet cursus libero. In fringilla egestas ornare.
-                                                </div>
-                                                <div class="clear"></div>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div><!-- .comments -->
-
-                                        <div class="comment">
-                                            <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                            <div class="text">
-                                                <div class="name">John Smith <a class="reply" href="#">Reply</a></div>
-                                                <div class="date">12, September, 2013</div>
-                                                Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit. Praesent condimentum sed elit
-                                                vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                amet cursus libero. In fringilla egestas ornare.
-                                            </div>
-                                            <div class="comment sub">
-                                                <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                                <div class="text">
-                                                    <div class="name">Bill Gates <a class="reply" href="#">Reply</a></div>
-                                                    <div class="date">12, September, 2013</div>
-                                                    Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing elit. Praesent condimentum sed elit
-                                                    vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                    amet cursus libero. In fringilla egestas ornare.
-                                                </div>
-                                                <div class="clear"></div>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div><!-- .comments -->
-
-                                        <div class="comment">
-                                            <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                            <div class="text">
-                                                <div class="name">Andrian Robert <a class="reply" href="#">Reply</a></div>
-                                                <div class="date">12, September, 2013</div>
-                                                Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit. Praesent condimentum sed elit
-                                                vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                amet cursus libero. In fringilla egestas ornare.
-                                            </div>
-                                            <div class="comment sub">
-                                                <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                                <div class="text">
-                                                    <div class="name">Bill Gates <a class="reply" href="#">Reply</a></div>
-                                                    <div class="date">12, September, 2013</div>
-                                                    Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing elit. Praesent condimentum sed elit
-                                                    vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                    amet cursus libero. In fringilla egestas ornare.
-                                                </div>
-                                                <div class="clear"></div>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div><!-- .comments -->
-
-                                        <div class="comment">
-                                            <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                            <div class="text">
-                                                <div class="name">Andrian Robert <a class="reply" href="#">Reply</a></div>
-                                                <div class="date">12, September, 2013</div>
-                                                Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit. Praesent condimentum sed elit
-                                                vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                amet cursus libero. In fringilla egestas ornare.
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div><!-- .comments -->
-
-
-
-                                    </div><!-- .post_comments -->
-
-                                    <div class="clear"></div>      
-
-
-                                    <div class="comment_form">
-                                        <div class="title_content">
-                                            <div class="text_content">Leave A Comment</div>
-                                            <div class="clear"></div>
-                                        </div>
-
-
-                                        <form method="post" id="comment_form">
-                                            <p class="form-group" id="contact-name">
-                                                <label for="name">Your Name</label>
-                                                <input type="text" name="name" class="form-control" id="inputSuccess" placeholder="Name*...">
-                                            </p>
-                                            <p class="form-group" id="contact-email"> 
-                                                <label for="email">Your Email</label>
-                                                <input type="text" name="email" class="form-control" id="inputSuccess" placeholder="Email*...">
-                                            </p>
-
-                                            <p class="form-group" id="contact-message">
-                                                <label for="message">Your Message</label>
-                                                <textarea name="message" cols="88" rows="6" class="form-control" id="inputError" placeholder="Your Comment..."></textarea>
-                                            </p>
-                                            <input type="reset" name="reset" value="CLEAR" class="reset">
-                                            <!--<input type="submit" name="submit" value="Post Comment" class="submit">-->
-                                            <button class="submit" data-toggle="modal" data-target=".bs-example-modal-sm">Post Comment</button>
-                                        </form>                        
-                                        <div class="clear"></div>
-
-                                    </div>
-                                </div>
-
-
-
-                                <div class="col-md-12" style="margin-top: 20px;">
-                                    <a href="#post-2" class="readmore" id="pagination"><i class="glyphicon glyphicon-chevron-right"></i></a>
-                                    <a href="#" class="readmore disabled" id="pagination"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                                    <a href="#blog" class="readmore"><i class="glyphicon glyphicon-chevron-left"></i> All Posts</a>
-                                </div>
-
-                                <div class="clear"></div>
-
-                        </article>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </section>
-            <!-- End Page Blog - Post 1 -->
-
-            <!-- Page Blog - Post 2 -->
-            <section id="post-2-page" class="content-post" style="display: none">
-                <div class="row inner">
-
-                    <div class="col-md-12" style="width: 100%;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;float: left;background: rgba(255, 255, 255, 0.8);padding-bottom: 15px;padding-top: 15px;">
-
-                        <article class="postPage">
-
-                            <div class="col-md-12 post_media">
-
-                                <div class="post-format-icon">
-                                    <a href="#" class="item-date"><span class="fa fa-pencil"></span></a>
-                                </div>
-
-                            </div>
-
-                            <div class="title_content">
-                                <div class="text_content">BLOG ASIDE POST</div>
-                                <div class="clear"></div>
-                            </div>
-
-
-                            <p class="caps">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with.</p>
-
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-
-                            <div class="col-md-12 first">
-                                <div class="info">
-                                    <div>
-                                        <span class="tag">#php</span>
-                                        <span class="tag">#web</span>
-                                        <span class="tag">#web design</span>
-                                    </div>
-
-
-                                    <ul class="info-post">
-                                        <li><i class="glyphicon glyphicon-comment"></i> 2 Comments</li>
-                                        <li><i class="glyphicon glyphicon-time"></i> January 31, 2014</li>
-                                        <li><i class="glyphicon glyphicon-user"></i> by Jane Doe</li>
-                                        <li><i class="glyphicon glyphicon-tag"></i> php, web design</li>
-                                    </ul>
-                                </div>
-
-                                <div class="clear"></div>      
-
-
-                                <div class="about_author">
-                                    <div class="title_content" style="margin-bottom:10px">
-                                        <div class="text_content">BILL GATES</div>
-                                        <div class="clear"></div>
-                                    </div>
-
-                                    <div class="clear"></div>
-
-
-                                    <div class="prg_content">
-                                        <img src="http://placehold.it/100x100" width="100" height="100" alt="img">
-
-                                        <div class="text">
-                                            Lorem ipsum dolor sit amet, consectetur
-                                            adipiscing elit. Praesent condimentum sed elit
-                                            vitae tristique. Aliquam erat volutpat. Nunc sit
-                                            amet cursus libero. In fringilla egestas ornare.
-                                        </div>
-
-                                        <div class="nb_post" style="margin-top: 10px;">
-                                            <b id="nb_post"> 15 posts</b> created by author
-                                        </div>
-                                    </div>
-
-                                    <div class="clear"></div>
-                                </div>
-
-                                <div class="clear"></div>      
-
-
-                                <div class="post_comments">
-
-                                    <div class="title_content">
-                                        <div class="text_content">7 Comments</div>
-                                        <div class="clear"></div>
-                                    </div>
-
-                                    <div class="clear"></div>
-
-                                    <div class="comments">
-
-                                        <div class="comment">
-                                            <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                            <div class="text">
-                                                <div class="name">John Doe <a class="reply" href="#">Reply</a></div>
-                                                <div class="date">12, September, 2013</div>
-                                                Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit. Praesent condimentum sed elit
-                                                vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                amet cursus libero. In fringilla egestas ornare.
-                                            </div>
-                                            <div class="comment sub">
-                                                <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                                <div class="text">
-                                                    <div class="name">Bill Gates <a class="reply" href="#">Reply</a></div>
-                                                    <div class="date">12, September, 2013</div>
-                                                    Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing elit. Praesent condimentum sed elit
-                                                    vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                    amet cursus libero. In fringilla egestas ornare.
-                                                </div>
-                                                <div class="clear"></div>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div><!-- .comments -->
-
-                                        <div class="comment">
-                                            <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                            <div class="text">
-                                                <div class="name">John Smith <a class="reply" href="#">Reply</a></div>
-                                                <div class="date">12, September, 2013</div>
-                                                Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit. Praesent condimentum sed elit
-                                                vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                amet cursus libero. In fringilla egestas ornare.
-                                            </div>
-                                            <div class="comment sub">
-                                                <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                                <div class="text">
-                                                    <div class="name">Bill Gates <a class="reply" href="#">Reply</a></div>
-                                                    <div class="date">12, September, 2013</div>
-                                                    Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing elit. Praesent condimentum sed elit
-                                                    vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                    amet cursus libero. In fringilla egestas ornare.
-                                                </div>
-                                                <div class="clear"></div>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div><!-- .comments -->
-
-                                        <div class="comment">
-                                            <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                            <div class="text">
-                                                <div class="name">Andrian Robert <a class="reply" href="#">Reply</a></div>
-                                                <div class="date">12, September, 2013</div>
-                                                Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit. Praesent condimentum sed elit
-                                                vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                amet cursus libero. In fringilla egestas ornare.
-                                            </div>
-                                            <div class="comment sub">
-                                                <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                                <div class="text">
-                                                    <div class="name">Bill Gates <a class="reply" href="#">Reply</a></div>
-                                                    <div class="date">12, September, 2013</div>
-                                                    Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing elit. Praesent condimentum sed elit
-                                                    vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                    amet cursus libero. In fringilla egestas ornare.
-                                                </div>
-                                                <div class="clear"></div>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div><!-- .comments -->
-
-                                        <div class="comment">
-                                            <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                            <div class="text">
-                                                <div class="name">Andrian Robert <a class="reply" href="#">Reply</a></div>
-                                                <div class="date">12, September, 2013</div>
-                                                Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit. Praesent condimentum sed elit
-                                                vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                amet cursus libero. In fringilla egestas ornare.
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div><!-- .comments -->
-
-
-
-                                    </div><!-- .post_comments -->
-
-                                    <div class="clear"></div>      
-
-
-                                    <div class="comment_form">
-
-                                        <div class="title_content">
-                                            <div class="text_content">Leave A Comment</div>
-                                            <div class="clear"></div>
-                                        </div>
-
-
-                                        <form method="post" id="comment_form">
-                                            <p class="form-group" id="contact-name">
-                                                <label for="name">Your Name</label>
-                                                <input type="text" name="name" class="form-control" id="inputSuccess" placeholder="Name*...">
-                                            </p>
-                                            <p class="form-group" id="contact-email"> 
-                                                <label for="email">Your Email</label>
-                                                <input type="text" name="email" class="form-control" id="inputSuccess" placeholder="Email*...">
-                                            </p>
-
-                                            <p class="form-group" id="contact-message">
-                                                <label for="message">Your Message</label>
-                                                <textarea name="message" cols="88" rows="6" class="form-control" id="inputError" placeholder="Your Comment..."></textarea>
-                                            </p>
-                                            <input type="reset" name="reset" value="CLEAR" class="reset">
-                                            <!--<input type="submit" name="submit" value="Post Comment" class="submit">-->
-                                            <button class="submit" data-toggle="modal" data-target=".bs-example-modal-sm">Post Comment</button>
-                                        </form>                        
-                                        <div class="clear"></div>
-
-                                    </div>
-                                </div>
-
-
-
-                                <div class="col-md-12"  style="margin-top: 20px;">
-                                    <a href="#post-3" class="readmore" id="pagination"><i class="glyphicon glyphicon-chevron-right"></i></a>
-                                    <a href="#post-1" class="readmore" id="pagination"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                                    <a href="#blog" class="readmore"><i class="glyphicon glyphicon-chevron-left"></i> All Posts</a>
-                                </div>
-
-                                <div class="clear"></div>
-
-                        </article>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </section>
-            <!-- End Page Blog - Post 2 -->
-
-            <!-- Page Blog - Post 3 -->
-            <section id="post-3-page" class="content-post" style="display: none">
-                <div class="row inner">
-
-                    <div class="col-md-12" style="width: 100%;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;float: left;background: rgba(255, 255, 255, 0.8);padding-bottom: 15px;padding-top: 15px;">
-
-                        <article class="postPage">
-
-
-                            <div class="col-md-12 post_media">
-
-                                <div class="post-format-icon">
-                                    <a href="#" class="item-date"><span class="fa fa-picture-o"></span></a>
-                                </div>
-
-                                <div class="media">
-                                    <div class="he-wrap tpl2">
-                                        <img src="images/blog/blog-2.jpg" class="img-hover" alt="">
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="title_content">
-                                <div class="text_content">BLOG POST IMAGE</div>
-                                <div class="clear"></div>
-                            </div>
-
-
-                            <p class="caps">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with.</p>
-
-                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-
-                            <div class="col-md-12 first">
-                                <div class="info">
-                                    <div>
-                                        <span class="tag">#php</span>
-                                        <span class="tag">#web</span>
-                                        <span class="tag">#web design</span>
-                                    </div>
-
-
-                                    <ul class="info-post">
-                                        <li><i class="glyphicon glyphicon-comment"></i> 2 Comments</li>
-                                        <li><i class="glyphicon glyphicon-time"></i> January 31, 2014</li>
-                                        <li><i class="glyphicon glyphicon-user"></i> by Jane Doe</li>
-                                        <li><i class="glyphicon glyphicon-tag"></i> Photoshop</li>
-                                    </ul>
-                                </div>
-
-                                <div class="clear"></div>      
-
-
-                                <div class="about_author">
-                                    <div class="title_content" style="margin-bottom:10px">
-                                        <div class="text_content">BILL GATES</div>
-                                        <div class="clear"></div>
-                                    </div>
-
-                                    <div class="clear"></div>
-
-
-                                    <div class="prg_content">
-                                        <img src="http://placehold.it/100x100" width="100" height="100" alt="img">
-
-                                        <div class="text">
-                                            Lorem ipsum dolor sit amet, consectetur
-                                            adipiscing elit. Praesent condimentum sed elit
-                                            vitae tristique. Aliquam erat volutpat. Nunc sit
-                                            amet cursus libero. In fringilla egestas ornare.
-                                        </div>
-
-                                        <div class="nb_post" style="margin-top: 10px;">
-                                            <b id="nb_post"> 15 posts</b> created by author
-                                        </div>
-                                    </div>
-
-                                    <div class="clear"></div>
-                                </div>
-
-                                <div class="clear"></div>      
-
-
-                                <div class="post_comments">
-
-                                    <div class="title_content">
-                                        <div class="text_content">7 Comments</div>
-                                        <div class="clear"></div>
-                                    </div>
-
-                                    <div class="clear"></div>
-
-                                    <div class="comments">
-
-                                        <div class="comment">
-                                            <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                            <div class="text">
-                                                <div class="name">John Doe <a class="reply" href="#">Reply</a></div>
-                                                <div class="date">12, September, 2013</div>
-                                                Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit. Praesent condimentum sed elit
-                                                vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                amet cursus libero. In fringilla egestas ornare.
-                                            </div>
-                                            <div class="comment sub">
-                                                <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                                <div class="text">
-                                                    <div class="name">Bill Gates <a class="reply" href="#">Reply</a></div>
-                                                    <div class="date">12, September, 2013</div>
-                                                    Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing elit. Praesent condimentum sed elit
-                                                    vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                    amet cursus libero. In fringilla egestas ornare.
-                                                </div>
-                                                <div class="clear"></div>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div><!-- .comments -->
-
-                                        <div class="comment">
-                                            <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                            <div class="text">
-                                                <div class="name">John Smith <a class="reply" href="#">Reply</a></div>
-                                                <div class="date">12, September, 2013</div>
-                                                Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit. Praesent condimentum sed elit
-                                                vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                amet cursus libero. In fringilla egestas ornare.
-                                            </div>
-                                            <div class="comment sub">
-                                                <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                                <div class="text">
-                                                    <div class="name">Bill Gates <a class="reply" href="#">Reply</a></div>
-                                                    <div class="date">12, September, 2013</div>
-                                                    Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing elit. Praesent condimentum sed elit
-                                                    vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                    amet cursus libero. In fringilla egestas ornare.
-                                                </div>
-                                                <div class="clear"></div>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div><!-- .comments -->
-
-                                        <div class="comment">
-                                            <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                            <div class="text">
-                                                <div class="name">Andrian Robert <a class="reply" href="#">Reply</a></div>
-                                                <div class="date">12, September, 2013</div>
-                                                Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit. Praesent condimentum sed elit
-                                                vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                amet cursus libero. In fringilla egestas ornare.
-                                            </div>
-                                            <div class="comment sub">
-                                                <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                                <div class="text">
-                                                    <div class="name">Bill Gates <a class="reply" href="#">Reply</a></div>
-                                                    <div class="date">12, September, 2013</div>
-                                                    Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing elit. Praesent condimentum sed elit
-                                                    vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                    amet cursus libero. In fringilla egestas ornare.
-                                                </div>
-                                                <div class="clear"></div>
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div><!-- .comments -->
-
-                                        <div class="comment">
-                                            <img src="http://placehold.it/100x100" width="100" height="100" alt="img" />
-                                            <div class="text">
-                                                <div class="name">Andrian Robert <a class="reply" href="#">Reply</a></div>
-                                                <div class="date">12, September, 2013</div>
-                                                Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit. Praesent condimentum sed elit
-                                                vitae tristique. Aliquam erat volutpat. Nunc sit
-                                                amet cursus libero. In fringilla egestas ornare.
-                                            </div>
-                                            <div class="clear"></div>
-                                        </div><!-- .comments -->
-
-
-
-                                    </div><!-- .post_comments -->
-
-                                    <div class="clear"></div>      
-
-
-                                    <div class="comment_form">
-
-                                        <div class="title_content">
-                                            <div class="text_content">Leave A Comment</div>
-                                            <div class="clear"></div>
-                                        </div>
-
-
-                                        <form method="post" id="comment_form">
-                                            <p class="form-group" id="contact-name">
-                                                <label for="name">Your Name</label>
-                                                <input type="text" name="name" class="form-control" id="inputSuccess" placeholder="Name*...">
-                                            </p>
-                                            <p class="form-group" id="contact-email"> 
-                                                <label for="email">Your Email</label>
-                                                <input type="text" name="email" class="form-control" id="inputSuccess" placeholder="Email*...">
-                                            </p>
-
-                                            <p class="form-group" id="contact-message">
-                                                <label for="message">Your Message</label>
-                                                <textarea name="message" cols="88" rows="6" class="form-control" id="inputError" placeholder="Your Comment..."></textarea>
-                                            </p>
-                                            <input type="reset" name="reset" value="CLEAR" class="reset">
-                                            <!--<input type="submit" name="submit" value="Post Comment" class="submit">-->
-                                            <button class="submit" data-toggle="modal" data-target=".bs-example-modal-sm">Post Comment</button>
-                                        </form>                        
-                                        <div class="clear"></div>
-
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-12" style="margin-top: 20px;">
-                                    <a href="#" class="readmore disabled" id="pagination"><i class="glyphicon glyphicon-chevron-right"></i></a>
-                                    <a href="#post-2" class="readmore" id="pagination"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                                    <a href="#blog" id="blog" class="readmore"><i class="glyphicon glyphicon-chevron-left"></i> All Posts</a>
-                                </div>
-
-                                <div class="clear"></div>
-
-                        </article>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </section>
-            <!-- End Page Blog - Post 3 -->
-
-
-        </div>
-
-
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h3 class="modal-title h3_modal" style="color: #fff !important;">jyotirmaysenapati.com</h3>
-                    </div>
-                    <div class="modal-body">
-                        <p></p>
-                        <p></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-                                            </div>
-                                            <!-- End .blog -->
-
-                                            <!-- .contact -->
-                                            <div id="contact" class="content_2">
-                                                
-                                        <h1 class="h-bloc">Contact - Contact Me</h1>
-
-
-                                        <div class="row">
-
-                                            <div class="col-lg-12">
-                                                <div id="map"></div>
+                                                <!-- /.title_content -->
+                                                <!-- .attributes -->
                                                 <?php
-                                                /*
-                                                    header('X-Frame-Options: GOFORIT'); 
-                                                    print '<iframe src="https://www.google.com/maps/place/SLN+Bajaj/@12.9571938,77.7361816,17z/data=!3m1!4b1!4m5!3m4!1s0x3bae120ea0867e9f:0x5136905bd142bc2b!8m2!3d12.9571886!4d77.7383703"></iframe>';
-                                                */
-                                                ?>
-                                                
-                                            </div>  
-
-                                            <div class="col-lg-12">
-                                                <div class="row" id="contact-user">
-                                                    <div class="col-md-5">
-                                                        <div class="contact-info">
-                                                            <!--<h3 class="main-heading"><span>Contact info</span></h3>-->
-
-                                                            <div class="title_content" style="float: none;">
-                                                                <div class="text_content">Contact info</div>
-                                                                <div class="clear"></div>
+                                                   $str = "";
+                                                   while($exp = $expr->fetch_assoc()){
+                                                       $str = $str.'<ul class="attributes">
+                                                                       <li class="first">
+                                                                           <h5>'.$exp["designation"].' <span class="duration"><i class="fa fa-calendar color"></i> '.$exp["start"].' - '.$exp["end"].'</span></h5>
+                                                                           <h6>
+                                                                               <span class="fa fa-briefcase"></span>
+                                                                               <a href="'.$exp["url"].'" target="_blank"> '.$exp["company"].', '.$exp["address"].'</a>
+                                                                           </h6>
+                                                                           '.$exp["description"].'
+                                                                       </li>
+                                                                   </ul>';
+                                                   }
+                                                   echo $str;
+                                                   ?>
+                                                <!-- /.attributes -->
+                                                <br>
+                                                <!-- .title_content -->
+                                                <div class="title_content">
+                                                   <div class="text_content">Education</div>
+                                                   <div class="clear"></div>
+                                                </div>
+                                                <!-- /.title_content -->
+                                                <!-- .attributes -->
+                                                <ul class="attributes">
+                                                   <?php
+                                                      $str = "";
+                                                      while($ed = $edu->fetch_assoc()){
+                                                          $str = $str.'<li  class="first">
+                                                                          <h5>'.$ed["degree"].' <span class="duration"><i class="fa fa-calendar color"></i> '.$ed["start"].' - '.$ed["end"].'</span></h5>
+                                                                          <h6>
+                                                                              <span class="fa fa-book"></span>
+                                                                              <a href="'.$ed["url"].'" target="_blank"> '.$ed["school"].', '.$ed["address"].'</a>
+                                                                          </h6>
+                                                                          '.$ed["description"].'
+                                                                      </li>';
+                                                      }
+                                                      echo $str;
+                                                      ?>
+                                                </ul>
+                                                <!-- /.attributes -->
+                                                <br>  
+                                             </div>
+                                             <!-- /.resume-top -->
+                                             <div class="row">
+                                                <!-- .resume-bottom -->
+                                                <div class="col-md-6" style="padding-left: 30px;">
+                                                   <!-- .title_content -->
+                                                   <div class="title_content" style="float: none;">
+                                                      <div class="text_content">Programming Skills</div>
+                                                      <div class="clear"></div>
+                                                   </div>
+                                                   <!-- /.title_content -->
+                                                   <div class="skills">
+                                                      <!-- .skillbar -->
+                                                      <?php
+                                                         $str = "";
+                                                         while($pr = $prog->fetch_assoc()){
+                                                             $str = $str.'<div class="skillbar clearfix" data-percent="'.$pr["level"].'%">
+                                                                             <div class="skillbar-title"><span>'.$pr["name"].'</span></div>
+                                                                             <div class="skillbar-bar"></div>
+                                                                             <div class="skill-bar-percent">'.$pr["level"].'%</div>
+                                                                         </div>';
+                                                         }
+                                                         echo $str;    
+                                                         ?>
+                                                      <!-- /.skillbar -->
+                                                   </div>
+                                                   <!-- .title_content -->
+                                                   <div class="title_content" style="float: none;">
+                                                      <div class="text_content">Language Skills</div>
+                                                      <div class="clear"></div>
+                                                   </div>
+                                                   <!-- /.title_content -->
+                                                   <div class="skills">
+                                                      <!-- .skillbar -->
+                                                      <?php
+                                                         $str = "";
+                                                         while($lg = $lang->fetch_assoc()){
+                                                             $str = $str.'<div class="skillbar clearfix" data-percent="'.$lg["level"].'%">
+                                                                             <div class="skillbar-title"><span>'.$lg["name"].'</span></div>
+                                                                             <div class="skillbar-bar"></div>
+                                                                             <div class="skill-bar-percent">'.$lg["level"].'%</div>
+                                                                         </div>';
+                                                         }
+                                                         echo $str;    
+                                                         ?>
+                                                      <!-- /.skillbar -->
+                                                   </div>
+                                                </div>
+                                                <div class="col-md-6" style="padding-left: 30px;">
+                                                   <!-- .title_content -->
+                                                   <div class="title_content" style="float: none;">
+                                                      <div class="text_content">IDE Used</div>
+                                                      <div class="clear"></div>
+                                                   </div>
+                                                   <!-- /.title_content -->
+                                                   <div class="skills">
+                                                      <!-- .skillbar -->
+                                                      <?php
+                                                         $str = "";
+                                                         while($id = $ide->fetch_assoc()){
+                                                             $str = $str.'<div class="skillbar clearfix" data-percent="'.$id["level"].'%">
+                                                                             <div class="skillbar-title"><span>'.$id["name"].'</span></div>
+                                                                             <div class="skillbar-bar"></div>
+                                                                             <div class="skill-bar-percent">'.$id["level"].'%</div>
+                                                                         </div>';
+                                                         }
+                                                         echo $str;    
+                                                         ?>
+                                                      <!-- /.skillbar -->
+                                                   </div>
+                                                   <!-- .title_content -->
+                                                   <div class="title_content" style="float: none;">
+                                                      <div class="text_content">Office Skills</div>
+                                                      <div class="clear"></div>
+                                                   </div>
+                                                   <!-- /.title_content -->
+                                                   <div class="skills">
+                                                      <!-- .skillbar -->
+                                                      <?php
+                                                         $str = "";
+                                                         while($oc = $ofc->fetch_assoc()){
+                                                             $str = $str.'<div class="skillbar clearfix" data-percent="'.$oc["level"].'%">
+                                                                             <div class="skillbar-title"><span>'.$oc["name"].'</span></div>
+                                                                             <div class="skillbar-bar"></div>
+                                                                             <div class="skill-bar-percent">'.$oc["level"].'%</div>
+                                                                         </div>';
+                                                         }
+                                                         echo $str;    
+                                                         ?>
+                                                      <!-- /.skillbar -->
+                                                   </div>
+                                                   <!-- .title_content -->
+                                                   <div class="title_content" style="float: none;">
+                                                      <div class="text_content">Hobbies</div>
+                                                      <div class="clear"></div>
+                                                   </div>
+                                                   <!-- /.title_content -->
+                                                   <div class="skills">
+                                                      <!-- .skillbar -->
+                                                      <?php
+                                                         $str = "";
+                                                         while($hb = $hoby->fetch_assoc()){
+                                                             $str = $str.'<div class="skillbar clearfix" data-percent="'.$hb["level"].'%">
+                                                                             <div class="skillbar-title"><span>'.$hb["name"].'</span></div>
+                                                                             <div class="skillbar-bar"></div>
+                                                                             <div class="skill-bar-percent">'.$hb["level"].'%</div>
+                                                                         </div>';
+                                                         }
+                                                         echo $str;    
+                                                         ?>
+                                                      <!-- /.skillbar -->
+                                                   </div>
+                                                </div>
+                                                <!-- /.resume-bottom -->
+                                             </div>
+                                          </div>
+                                          <div style="clear: both"></div>
+                                       </div>
+                                       <!-- End .resume -->
+                                       <?php
+                                          $sql = "SELECT * FROM projtypes";
+                                          $projtyp = mysqli_query($db, $sql);
+                                          
+                                          $sql = "SELECT p.*, pt.filter as strfilter FROM projects p join projtypes pt on pt.id = p.filter";
+                                          $proj = mysqli_query($db, $sql);
+                                          
+                                          ?>
+                                       <!-- .portfolio -->
+                                       <div id="portfolio" class="content_2">
+                                          <!-- .title -->
+                                          <h1 class="h-bloc">Portfolio - My Works</h1>
+                                          <div class="container-portfolio">
+                                             <!-- #filters -->
+                                             <ul id="filters" class="clearfix">
+                                                <?php
+                                                   $str = $df= "";
+                                                   while($pt = $projtyp->fetch_assoc()){
+                                                       $str = $str.'<li><span class="filter" data-filter="'.$pt["filter"].'">'.$pt["type"].'</span></li>';
+                                                       $df = $df." ".$pt["filter"];
+                                                   }
+                                                   ?>
+                                                <li><span class="filter active" data-filter="<?php echo $df;?>">All</span></li>
+                                                <?php echo $str; ?>
+                                             </ul>
+                                             <div id="portfoliolist">
+                                                <?php
+                                                   $str = "";
+                                                   $myblog_hosted_url = "";
+                                                   while($p = $proj->fetch_assoc()){
+                                                       $str = $str.'<div class="view view-first portfolio '.$p["strfilter"].'" data-cat="'.$p["strfilter"].'">
+                                                                       <img src="contents/images/portfolio/'.$p["iconfile"].'" />
+                                                                       <div class="mask">
+                                                                           <h2>'.$p["name"].'</h2>
+                                                                           '.$p["description"];
+                                                       if($p["hostedurl"]){
+                                                           if($p["name"]=="My Blog"){
+                                                               $myblog_hosted_url = $p["hostedurl"];
+                                                           }
+                                                           $str = $str.'<a href="'.$p["hostedurl"].'" target="_blank" class="info external">
+                                                                           <i class="fa fa-link"></i>
+                                                                           </a>';
+                                                       }
+                                                       if($p["codeurl"]){
+                                                           $str = $str.'<a href="'.$p["codeurl"].'" target="_blank" class="info external"><i class="fa fa-code"></i></a>'; 
+                                                       }
+                                                       $str = $str.'</div></div>';
+                                                   }
+                                                   echo $str;
+                                                   ?>
+                                                <div class="clear"></div>
+                                             </div>
+                                             <!-- #images/portfoliolist -->
+                                          </div>
+                                       </div>
+                                       <!-- End .portfolio -->
+                                       <?php
+                                          $sql = "SELECT * FROM carousel";
+                                          $carous = mysqli_query($db, $sql);
+                                          
+                                          $sql = "SELECT * FROM counter";
+                                          $cntr = mysqli_query($db, $sql);
+                                          $ctr = $cntr->fetch_assoc();
+                                          ?>
+                                       <!-- .blog -->
+                                       <div id="blog" class="content_2">
+                                          <h1 class="h-bloc">Journey - My Life</h1>
+                                          <br> 
+                                          <div class="col-md-12">
+                                             <div class="row">
+                                                <!-- Page Blog -->
+                                                <div class="col-md-12" id="blog_page">
+                                                   <!-- start Page Blog -->
+                                                   <section id="blog-page">
+                                                      <!-- Post 1 -->    
+                                                      <article id="post-1" class="blog-article">
+                                                         <div class="col-md-12">
+                                                            <div class="row">
+                                                               <div class="col-md-12 post_media">
+                                                                  <div class="post-format-icon">
+                                                                     <a href="#" class="item-date"><span class="fa fa-picture-o"></span></a>
+                                                                  </div>
+                                                                  <div class="media">
+                                                                     <div class="he-wrap tpl2">
+                                                                        <div id="carousel-1" class="carousel slide" data-ride="carousel">
+                                                                           <ol class="carousel-indicators">
+                                                                              <?php 
+                                                                                 for($i=0; $i<$carous->num_rows; $i++){
+                                                                                     $active = ($i == 0) ? "active" : "";
+                                                                                     echo '<li data-target="#carousel-1" data-slide-to="'.$i.'" class="'.$active.'"></li>'; 
+                                                                                 }
+                                                                                 ?>
+                                                                           </ol>
+                                                                           <div class="carousel-inner">
+                                                                              <?php
+                                                                                 $str = "";
+                                                                                 $flag = true;
+                                                                                 while($crs = $carous->fetch_assoc()){
+                                                                                     $active = $flag ? "active" : "";
+                                                                                     $str = $str.'<div class="item '.$active.'">
+                                                                                                     <img src="contents/images/carousels/'.$crs["filename"].'" alt="" />
+                                                                                                     <div class="carousel-caption">
+                                                                                                     <h4></h4>
+                                                                                                     <p></p>
+                                                                                                     </div>
+                                                                                                 </div>'; 
+                                                                                     $flag = false;           
+                                                                                 }
+                                                                                 echo $str;
+                                                                                 ?>
+                                                                           </div>
+                                                                           <a class="left carousel-control" href="#carousel-1" data-slide="prev">
+                                                                           <span class="glyphicon glyphicon-chevron-left"></span>
+                                                                           </a>
+                                                                           <a class="right carousel-control" href="#carousel-1" data-slide="next">
+                                                                           <span class="glyphicon glyphicon-chevron-right"></span>
+                                                                           </a>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                               </div>
                                                             </div>
-
+                                                            <div class="row">
+                                                               <div class="col-md-12 post_content">
+                                                                  <div class="content post_format_standart">
+                                                                     <div class="top_c ">
+                                                                        <div class="title_content">
+                                                                           <div class="clear"></div>
+                                                                        </div>
+                                                                     </div>
+                                                                  </div>
+                                                                  <a href="<?php echo $myblog_hosted_url;?>" class="download" target="_blank"><span data-hover="My Blog" style="color:white">Click to access myblog here</span></a>
+                                                                  <div id="counter"> <span id="totvisit">Total Site Visit : </span> <span id="counter"><?php echo $ctr["counter"]; ?></span></div>
+                                                               </div>
+                                                            </div>
+                                                            </div-->
+                                                      </article>
+                                                      <!-- End Post 1 -->
+                                                      <div class="clear"></div>
+                                                   </section>
+                                                   <!-- End Page Blog -->
+                                                   </div>
+                                                   <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                                      <div class="modal-dialog modal-sm">
+                                                         <div class="modal-content">
+                                                            <div class="modal-header">
+                                                               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                               <h3 class="modal-title h3_modal" style="color: #fff !important;">jyotirmaysenapati.com</h3>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                               <p></p>
+                                                               <p></p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <!-- End .blog -->
+                                          <!-- .contact -->
+                                          <div id="contact" class="content_2">
+                                             <h1 class="h-bloc">Contact - Contact Me</h1>
+                                             <div class="row">
+                                                <div class="col-lg-12">
+                                                   <div id="map"></div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                   <div class="row" id="contact-user">
+                                                      <div class="col-md-5">
+                                                         <div class="contact-info">
+                                                            <!--<h3 class="main-heading"><span>Contact info</span></h3>-->
+                                                            <div class="title_content" style="float: none;">
+                                                               <div class="text_content">Contact info</div>
+                                                               <div class="clear"></div>
+                                                            </div>
                                                             <ul>
-                                                                <li><span class="span-info"><i class="glyphicon glyphicon-map-marker"></i> Adress:</span> Bangalore, India<br /><br /></li>
-                                                                <li><span class="span-info"><i class="glyphicon glyphicon-envelope"></i> Email:</span> mail@jyotirmaysenapati.com</li>
-                                                                <li><span class="span-info"><i class="glyphicon glyphicon-phone"></i> Phone:</span> +91 9632555479</li>
-                                                                <li><span class="span-info"><i class="glyphicon glyphicon-globe"></i> Website:</span> www.jyotirmaysenapati.com</li>
-                                                                <li><span class="span-info"><i class="glyphicon glyphicon-comment"></i> Skype:</span> jyotirmay9</li>
-                                                                <li><span class="span-info"><i class="glyphicon glyphicon-thumbs-up"></i> G. Drive:</span> senapati.jyotirmaygmail.com</li>
+                                                               <li><span class="span-info"><i class="glyphicon glyphicon-map-marker"></i> Adress:</span> <?php echo $prof["address"]; ?><br /><br /></li>
+                                                               <li><span class="span-info"><i class="glyphicon glyphicon-envelope"></i> Email:</span> <?php echo $prof["email"]; ?></li>
+                                                               <li><span class="span-info"><i class="glyphicon glyphicon-phone"></i> Phone:</span> <?php echo $prof["phone"]; ?></li>
+                                                               <li><span class="span-info"><i class="glyphicon glyphicon-globe"></i> Website:</span> <?php echo $prof["website"]; ?></li>
+                                                               <li><span class="span-info"><i class="glyphicon glyphicon-comment"></i> Skype:</span> <?php echo $prof["skypeid"]; ?></li>
+                                                               <li><span class="span-info"><i class="glyphicon glyphicon-thumbs-up"></i> G. Drive:</span> <?php echo $prof["gdriveid"]; ?></li>
                                                             </ul>
-                                                        </div>
-                                                        <!-- /Contact Info -->
-                                                        <div class="clear"></div>
-
-                                                        <!--<h3 class="main-heading" style="margin-left: 22px;"><span>Follow me</span></h3>-->
-
-                                                        <div class="title_content tiltle_contacts" style="float: none;">
-                                                            <div class="text_content">Follow me</div>
+                                                         </div>
+                                                         <!-- /Contact Info -->
+                                                         <div class="clear"></div>
+                                                         <!--<h3 class="main-heading" style="margin-left: 22px;"><span>Follow me</span></h3>-->
+                                                         <div class="title_content tiltle_contacts" style="float: none;">
+                                                            <div class="text_content">
+                                                               Follow me
+                                                               <div class="fb-follow" data-href="https://www.facebook.com/Shaan.Exile" data-layout="standard" data-size="large" data-show-faces="true"></div>
+                                                            </div>
                                                             <div class="clear"></div>
-                                                        </div>
-
-                                                        <div id="profile_social">
-                                                            <a href="https://www.facebook.com/Shaan.Exile" target="_blank"><i class="fa fa-facebook"></i></a>
-                                                            <a href="https://twitter.com/Shaan_143" target="_blank"><i class="fa fa-twitter"></i></a>
-                                                            <a href="https://in.linkedin.com/in/jyotirmay-senapati-30615421" target='_blank' ><i class="fa fa-linkedin"></i></a>
-                                                            <a href="https://github.com/jyotirmay123" target="_blank"><i class="fa fa fa-github"></i></a>
-                                                            <a href="http://stackoverflow.com/users/3861545/jyotirmay" target="_blank"><i class="fa fa fa-stack-overflow"></i></a>
+                                                         </div>
+                                                         <div id="profile_social">
+                                                            <a href=<?php echo $prof["fblink"]; ?> target="_blank"><i class="fa fa-facebook"></i></a>
+                                                            <a href=<?php echo $prof["twitterlink"]; ?> target="_blank"><i class="fa fa-twitter"></i></a>
+                                                            <a href=<?php echo $prof["linkedinlink"]; ?> target='_blank' ><i class="fa fa-linkedin"></i></a>
+                                                            <a href=<?php echo $prof["githublink"]; ?> target="_blank"><i class="fa fa fa-github"></i></a>
+                                                            <a href=<?php echo $prof["stackoverflowlink"]; ?> target="_blank"><i class="fa fa fa-stack-overflow"></i></a>
                                                             <div class="clear"></div>
-                                                        </div>
-                                              
-
-
-                                                    </div>
-
-                                                    <div class="col-md-7">
-                                                        <!-- Contact Form -->
-                                                        <div class="title_content" style="float: none;">
+                                                         </div>
+                                                      </div>
+                                                      <div class="col-md-7">
+                                                         <!-- Contact Form -->
+                                                         <div class="title_content" style="float: none;">
                                                             <div class="text_content">Let's keep in touch</div>
                                                             <div class="clear"></div>
-                                                        </div>
-
-                                                        <div class="contact-form">
+                                                         </div>
+                                                         <div class="contact-form">
                                                             <!--<h3 class="main-heading"><span>Let's keep in touch</span></h3>-->
-
-
-
                                                             <div id="contact-status"></div>
-
                                                             <form method="post" action="" id="contactform">
-                                                                <p class="form-group" id="contact-name">
-                                                                    <label for="name">Your Name</label>
-                                                                    <input type="text" name="name" class="form-control name-contact" id="inputSuccess" placeholder="Name..." />
-                                                                </p>
-                                                                <p class="form-group" id="contact-email"> 
-                                                                    <label for="email">Your Email</label>
-                                                                    <input type="text" name="email" class="form-control email-contact" id="inputSuccess" placeholder="Email..." />
-                                                                </p>
-
-                                                                <p class="form-group" id="contact-message">
-                                                                    <label for="message">Your Message</label>
-                                                                    <textarea name="message" cols="88" rows="6" class="form-control message-contact" id="inputError" placeholder="Message..."></textarea>
-                                                                </p>
-                                                                <input type="reset" name="reset" value="CLEAR" class="reset">
-                                                                <!-- <input type="submit" name="submit" value="SEND MESSAGE" class="submit">-->
-
-                                                                <section class="button-demo" style="display: inline-block;">
-                                                                    <button class="ladda-button submit send_email" name="submit" data-color="green" data-style="expand-left">SEND MESSAGE</button>
-                                                                </section>
-
+                                                               <p class="form-group" id="contact-name">
+                                                                  <label for="name">Your Name</label>
+                                                                  <input type="text" name="name" class="form-control name-contact" id="inputSuccess" placeholder="Name..." />
+                                                               </p>
+                                                               <p class="form-group" id="contact-email"> 
+                                                                  <label for="email">Your Email</label>
+                                                                  <input type="text" name="email" class="form-control email-contact" id="inputSuccess" placeholder="Email..." />
+                                                               </p>
+                                                               <p class="form-group" id="contact-message">
+                                                                  <label for="message">Your Message</label>
+                                                                  <textarea name="message" cols="88" rows="6" class="form-control message-contact" id="inputError" placeholder="Message..."></textarea>
+                                                               </p>
+                                                               <input type="reset" name="reset" value="CLEAR" class="reset">
+                                                               <!-- <input type="submit" name="submit" value="SEND MESSAGE" class="submit">-->
+                                                               <section class="button-demo" style="display: inline-block;">
+                                                                  <button class="ladda-button submit send_email" name="submit" data-color="green" data-style="expand-left">SEND MESSAGE</button>
+                                                               </section>
                                                             </form>
-                                                        </div>
-                                                        <!-- /Contact Form -->
-                                                    </div>
+                                                         </div>
+                                                         <!-- /Contact Form -->
+                                                      </div>
+                                                   </div>
                                                 </div>
-                                            </div>  
-
-
-
-                                        </div>                                            </div>
-                                            <!-- End .contact -->
-
-                                        </div>
-                                        <!-- End #resp-tabs-container --> 
-
-                                    </div><!-- End verticalTab -->
-
-                                </div><!-- End flexy_content -->
-
-
-                            </div><!-- End row -->
-
-                        </div><!-- End col-md-12 -->
-
-                    </div><!-- End row -->
-
-                </div><!-- End container -->
-
-            </section>
-            <!-- End Content -->
-
-        </div>
-        <!-- End wrapper -->
-	<!--div id="geo" class="geolocation_data"></div-->
-		
-        <!-- Switcher -->
-        <!--div id="custumize-style">
-            <h2>Style Selector<a href="#" class="switcher"><i class="fa fa-cogs icon-switcher"></i></a></h2>
-            <div>
-                <h3>Theme Color</h3>
-                <ul class="colors-style" id="color1">
-
-                    <li><a href="#" class="gray"></a></li>
-                    <li><a href="#" class="green"></a></li>
-                    <li><a href="#" class="blue"></a></li>
-                    <li><a href="#" class="red"></a></li>
-                    <li><a href="#" class="yellow"></a></li>
-
-                    <li><a href="#" class="DarkBlue"></a></li>
-                    <li><a href="#" class="orange"></a></li>
-                    <li><a href="#" class="rose"></a></li>
-                    <li><a href="#" class="lightseagreen"></a></li>
-                    <li><a href="#" class="darkolivegreen"></a></li>
-
-                </ul>
-            </div>
-            <div> 
-
-                <h3 class="layouts">Profile Image</h3>
-                <div id="show">
-
-                    <div class="clean-check">
-
-                        <input type="radio" id="r1" name="style_profile" value="style_profile_1" checked="checked" />
-                        <label for="r1"><span></span>Rotating image</label>
-
-                        <input type="radio" id="r2" name="style_profile" value="style_profile_2" />
-                        <label for="r2"><span></span>Fixed image</label>
-
-                    </div>
-                </div>
-
-
-                
-                <h3 class="layouts">Page Builder</h3>
-                <div id="show">
-                    <div class="clean-check" style="padding-left: 30px;">
-
-                        <input type="radio" id="pb1" name="page_builder" value="http://demo.flexy-codes.com/FlexyVcard"  checked />
-                        <label for="pb1"><span></span>Style 1</label>
-
-                        <input type="radio" id="pb2" name="page_builder" value="http://demo.flexy-codes.com/FlexyVcard/page-builder-2.php"  />
-                        <label for="pb2"><span></span>Style 2</label>
-
-                        <input type="radio" id="pb3" name="page_builder" value="http://demo.flexy-codes.com/FlexyVcard/page-builder-3.php"  />
-                        <label for="pb3"><span></span>Style 3</label>
-
-                        <input type="radio" id="pb4" name="page_builder" value="http://demo.flexy-codes.com/FlexyVcard/page-builder-4.php"  />
-                        <label for="pb4"><span></span>Style 4</label>
-                    </div>
-                </div>      
-
-                <h3 class="layouts">Page Animation</h3>
-                <div id="show">
-
-                    <select name="one" class="dropdown-select">
-                        <optgroup label="Bouncing Entrances">
-                            <option value="bounceIn" selected>bounceIn</option>
-                            <option value="bounceInDown">bounceInDown</option>
-                            <option value="bounceInLeft">bounceInLeft</option>
-                            <option value="bounceInRight">bounceInRight</option>
-                            <option value="bounceInUp">bounceInUp</option>
-                        </optgroup>
-
-                        <optgroup label="Fading Entrances">
-                            <option value="fadeIn">fadeIn</option>
-                            <option value="fadeInDown">fadeInDown</option>
-                            <option value="fadeInLeft">fadeInLeft</option>
-                            <option value="fadeInRight">fadeInRight</option>
-                            <option value="fadeInUp">fadeInUp</option>
-                        </optgroup>      
-                    </select>
-
-                </div>
-
-                <h3 class="layouts" style="padding-top:5px">Background Style</h3>
-                <div id="show">
-
-                    <div class="clean-check">
-
-						<input type="radio" id="s1" name="layout" value="bg_color" checked="checked" />
-                        <label for="s1"><span></span>Color</label>
-                        
-                        <input type="radio" id="s2" name="layout" value="bg_slider" />
-                        <label for="s2"><span></span>Slider</label>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div> 
-                <h3>Background Color</h3>
-                <ul class="colors-style bgsolid" id="bgsolid">
-                    <li><a href="#" class="gray-bg"></a></li>
-                    <li><a href="#" class="green-bg"></a></li>
-                    <li><a href="#" class="blue-bg"></a></li>
-                    <li><a href="#" class="red-bg"></a></li>
-                    <li><a href="#" class="yellow-bg"></a></li>
-                </ul>
-            </div> 
-
-            <div>  
-                <h3>Background Image</h3>
-                <ul class="colors-style bg" id="bg">
-                    <li><a href="#" class="bg1"></a></li>
-                    <li><a href="#" class="bg2"></a></li>
-                    <li><a href="#" class="bg3"></a></li>
-                    <li><a href="#" class="bg4"></a></li>
-                    <li><a href="#" class="bg5"></a></li>
-                </ul>
-            </div>
-
-            <div id="button-reset"><a href="#" class="button color blue boxed">Reset</a></div>
-        </div-->
-        <!-- End Switcher -->
-
-
-
-        <!-- jquery | jQuery 1.11.0 -->
-       
-        <!-- Credits: http://jquery.com -->
-        <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
- 		
-        <!-- Js | bootstrap -->
-        <!-- Credits: http://getbootstrap.com/ -->
-        <script type="text/javascript" src="js/bootstrap.min.js"></script> 
-        
-        <!-- Js | jquery.cycle -->
-        <!-- Credits: https://github.com/malsup/cycle2 -->
-        <script type="text/javascript" src="js/jquery.cycle2.min.js"></script>
-        
-        <!-- jquery | rotate and portfolio -->
-        <!-- Credits: http://jquery.com -->
-        <script type="text/javascript" src="js/jquery.mixitup.min.js"></script> 
-        <script type="text/javascript" src="js/HeadImage.js"></script>
-
-        <!-- Js | easyResponsiveTabs -->
-        <!-- Credits: http://webtrendset.com/demo/easy-responsive-tabs/Index.html -->
-        <script type="text/javascript" src="js/easyResponsiveTabs.min.js"></script> 
-
-        <!-- Js | jquery.cookie -->
-        <!-- Credits: https://github.com/carhartl/jquery-cookie --> 
-        <script type="text/javascript" src="js/jsSwitcher/jquery.cookie.js"></script>	
-
-        <!-- Js | switcher -->
-        <!-- Credits: http://themeforest.net/user/FlexyCodes -->
-        <script type="text/javascript" src="js/jsSwitcher/switcher.js"></script>	
-
-        <!-- Js | mCustomScrollbar -->
-        <!-- Credits: http://manos.malihu.gr/jquery-custom-content-scroller -->
-        <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>		
-
-        <!-- jquery | prettyPhoto -->
-        <!-- Credits: http://www.no-margin-for-errors.com/ -->
-        <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
-        
-        <!-- Js | gmaps -->
-        <!-- Credits: http://maps.google.com/maps/api/js?sensor=true-->
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyd06iE1f8CMwj4cXExgbZC18QkN7HN1A"
-          type="text/javascript"></script>
-        <script type="text/javascript" src="js/gmaps.min.js"></script>
-
- 		<!-- Js | Js -->
-        <!-- Credits: http://themeforest.net/user/FlexyCodes -->
-        <script type="text/javascript" src="js/main.js"></script>
-        
-        <!-- code js for image rotate -->
-        <script type="text/javascript">
-
-            var mouseX;
-            var mouseY;
-            var imageOne;
-
-            /* Calling the initialization function */
-            $(init);
-
-            /* The images need to re-initialize on load and on resize, or else the areas
-             * where each image is displayed will be wrong. */
-            $(window).load(init);
-            $(window).resize(init);
-
-            /* Setting the mousemove event caller */
-            $(window).mousemove(getMousePosition);
-
-            /* This function is called on document ready, on load and on resize
-             * and initiallizes all the images */
-            function init() {
-
-                /* Instanciate the mouse position variables */
-                mouseX = 0;
-                mouseY = 0;
-
-                /* Instanciate a HeadImage class for every image */
-                imageOne = new HeadImage("one");
-
-            }
-
-            /* This function is called on mouse move and gets the mouse position. 
-             * It also calls the HeadImage function to display the correct image*/
-            function getMousePosition(event) {
-
-                /* Setting the mouse position variables */
-                mouseX = event.pageX;
-                mouseY = event.pageY;
-
-                /*Calling the setImageDirection function of the HeadImage class
-                 * to display the correct image*/
-                imageOne.setImageDirection();
-
-            }
-
-            var marker;
-
-            $(document).ready(function(){
-               
-            });
-        </script>
-
-
-        <!--[if lt IE 9]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-    </body>
-</html>
+                                             </div>
+                                          </div>
+                                          <!-- End .contact -->
+                                       </div>
+                                       <!-- End #resp-tabs-container --> 
+                                    </div>
+                                    <!-- End verticalTab -->
+                                 </div>
+                                 <!-- End flexy_content -->
+                              </div>
+                              <!-- End row -->
+                           </div>
+                           <!-- End col-md-12 -->
+                        </div>
+                        <!-- End row -->
+                     </div>
+                     <!-- End container -->
+               </section>
+               <!-- End Content -->
+               </div>
+               <!-- End wrapper -->
+               <!--div id="geo" class="geolocation_data"></div-->
+               <!-- jquery | jQuery 1.11.0 -->
+               <!-- Credits: http://jquery.com -->
+               <script type="text/javascript" src="contents/js/jquery-2.1.1.min.js"></script>
+               <!-- Js | bootstrap -->
+               <!-- Credits: http://getbootstrap.com/ -->
+               <script type="text/javascript" src="contents/js/bootstrap.min.js"></script> 
+               <!-- Js | jquery.cycle -->
+               <!-- Credits: https://github.com/malsup/cycle2 -->
+               <script type="text/javascript" src="contents/js/jquery.cycle2.min.js"></script>
+               <!-- jquery | rotate and portfolio -->
+               <!-- Credits: http://jquery.com -->
+               <script type="text/javascript" src="contents/js/jquery.mixitup.min.js"></script> 
+               <script type="text/javascript" src="contents/js/HeadImage.js"></script>
+               <!-- Js | easyResponsiveTabs -->
+               <!-- Credits: http://webtrendset.com/demo/easy-responsive-tabs/Index.html -->
+               <script type="text/javascript" src="contents/js/easyResponsiveTabs.min.js"></script> 
+               <!-- Js | jquery.cookie -->
+               <!-- Credits: https://github.com/carhartl/jquery-cookie --> 
+               <script type="text/javascript" src="contents/js/jsSwitcher/jquery.cookie.js"></script>    
+               <!-- Js | switcher -->
+               <!-- Credits: http://themeforest.net/user/FlexyCodes -->
+               <script type="text/javascript" src="contents/js/jsSwitcher/switcher.js"></script>    
+               <!-- Js | mCustomScrollbar -->
+               <!-- Credits: http://manos.malihu.gr/jquery-custom-content-scroller -->
+               <script type="text/javascript" src="contents/js/jquery.mCustomScrollbar.concat.min.js"></script>        
+               <!-- jquery | prettyPhoto -->
+               <!-- Credits: http://www.no-margin-for-errors.com/ -->
+               <script type="text/javascript" src="contents/js/jquery.prettyPhoto.js"></script>
+               <!-- Js | location, geoplugin -->
+               <script src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+               <script>
+               jQuery(document).ready(function($) {
+                    jQuery.getScript('http://www.geoplugin.net/javascript.gp', function() 
+                    {
+                        var country = geoplugin_countryName();
+                        var countryCode = geoplugin_countryCode();
+                        var ip = geoplugin_request();
+                        var regionName = geoplugin_regionName();
+                        var regionCode = geoplugin_regionCode();   
+                        var continentCode = geoplugin_continentCode();
+                        var lat = geoplugin_latitude();
+                        var lng = geoplugin_longitude();
+                        var currencyCode = geoplugin_currencyCode();
+                        var currencySymbol = geoplugin_currencySymbol();       
+                        $.ajax({
+                              method: "POST",
+                              url: "php/save_location.php",
+                              data: { country: country, countrycode: countryCode,
+                                ip:ip, regionName:regionName, regionCode:regionCode, 
+                                continentCode:continentCode, lat:lat, lng:lng,
+                                currencyCode:currencyCode, currencySymbol:currencySymbol}
+                        })
+                    });
+                });
+                </script>
+               <!-- Js | gmaps -->
+               <!-- Credits: http://maps.google.com/maps/api/js?sensor=true-->
+               <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyd06iE1f8CMwj4cXExgbZC18QkN7HN1A"
+                  type="text/javascript"></script>
+               <script type="text/javascript" src="contents/js/gmaps.js"></script> 
+               <!-- Js | Js -->
+               <!-- Credits: http://themeforest.net/user/FlexyCodes -->
+               <!-- It needs to be call after gmaps library. It is using that. -->
+               <script type="text/javascript" src="contents/js/main.js"></script>
+               <!--[if lt IE 9]>
+               <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+               <![endif]-->
+               <?php
+                if(isset($_GET["f"])){
+                    if ($_GET["f"] == 1){
+                        echo "<script>setTimeout(function(){parent.self.location='file/MyUniversityList.xlsx';}, 1000)</script>";
+                    } else if ($_GET["f"] == 2){
+                        echo "<script>setTimeout(function(){parent.self.location='file/MS_Resume.pdf';}, 1000)</script>";
+                    } else if ($_GET["f"] == 3){
+                        echo "<script>setTimeout(function(){parent.self.location='file/Educational_LOR.pdf';}, 1000)</script>";
+                    } else if ($_GET["f"] == 4){
+                        echo "<script>setTimeout(function(){parent.self.location='file/Official_LOR.pdf';}, 1000)</script>";
+                    } else if ($_GET["f"] == 5){
+                        echo "<script>setTimeout(function(){parent.self.location='file/SOP_TUM.docx';}, 1000)</script>";
+                    } else if ($_GET["f"] == 6){
+                        echo "<script>setTimeout(function(){parent.self.location='file/Essay_TUM.docx';}, 1000)</script>";
+                    } else if ($_GET["f"] == 7){
+                        echo "<script>setTimeout(function(){parent.self.location='file/MS-TUM-Curriculum-analysis.pdf';}, 1000)</script>";
+                    } else {
+                        echo "<script>setTimeout(function(){parent.self.location='index.php';}, 1000)</script>";
+                    }
+                }
+               ?>
+            </body>

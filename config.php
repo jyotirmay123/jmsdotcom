@@ -1,15 +1,29 @@
 <?php
-unset($jconfig);
-$jconfig = new stdClass();
-$jconfig->host = '50.62.209.120' ;
-$jconfig->username = 'jyotirmay';
-$jconfig->password = 'Shaan@123.';
-$jconfig->dbname = 'jyotirmay_appdata';
-$jconfig->port = 3306;
 
-$jconfig->wwwroot = 'http://localhost/jmsdotcom';
-$jconfig->dirroot = 'C:\xampp\htdocs\jmsdotcom';
+$is_local = true;
 
-require_once $jconfig->dirroot.'/functionality/db/dbconnect.php';
-global $jdb;
-$jdb = connectme($jconfig->host, $jconfig->username, $jconfig->password, $jconfig->dbname);
+$local = new stdClass();
+$mail = new stdClass();
+if (!$is_local){
+
+    $local->host = "localhost";
+    $local->user = "jyotgwcz_jj";
+    $local->pass = "Shaan@1.";
+    $local->select_db = "jyotgwcz_jmsdotcom";
+
+    $mail->username = "contact@jyotirmays.com";
+    $mail->pass = "Shaan@1.";
+
+} else {
+
+    $local->host = "localhost";
+    $local->user = "root";
+    $local->pass = "";
+    $local->select_db = "jmsdotcom";
+
+    $mail->username = "bbsenapati60@gmail.com";
+    $mail->pass = "Shaan@1.";
+
+}
+
+?>
