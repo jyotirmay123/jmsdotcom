@@ -592,6 +592,10 @@
                                                                   </div>
                                                                   <a href="<?php echo $myblog_hosted_url;?>" class="download" target="_blank"><span data-hover="My Blog" style="color:white">Click to access myblog here</span></a>
                                                                   <div id="counter"> <span id="totvisit">Total Site Visit : </span> <span id="counter"><?php echo $ctr["counter"]; ?></span></div>
+                                                                  <!--Div that will hold the column chart-->
+                                                                  <div id="accessor_chart_wrap">
+                                                                    <div id="accessor_chart"></div>
+                                                                  </div>
                                                                </div>
                                                             </div>
                                                             </div-->
@@ -785,6 +789,53 @@
                <!-- Credits: http://themeforest.net/user/FlexyCodes -->
                <!-- It needs to be call after gmaps library. It is using that. -->
                <script type="text/javascript" src="contents/js/main.js"></script>
+               <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+               <script type="text/javascript">
+   
+                    // Load the Visualization API.
+                    google.load('visualization', '1', {'packages':['corechart']});
+                    
+                    // Set a callback to run when the Google Visualization API is loaded.
+                    google.setOnLoadCallback(drawChart);
+                    
+                    $(window).on("throttledresize", function (event) {
+                        drawChart();
+                    });
+
+                    function drawChart() {
+                        var jsonData = $.ajax({
+                            url: "php/accessor_data.php",
+                            dataType:"json",
+                            async: false
+                            }).responseText;
+                        jd = JSON.parse(jsonData);
+                        //console.log(jsonData.substring(1, jsonData.length-1));
+                        //jsonData = jsonData.substring(1, jsonData.length-1)
+                        // Create our data table out of JSON data loaded from server.
+                        var data = new google.visualization.DataTable();
+                        data.addColumn('string', 'Country');
+                        data.addColumn('number', 'Count');
+                        jd.forEach(function(a){
+                            data.addRow([a["country"], parseInt(a["count"])]);  //
+                        });
+                        // Instantiate and draw our chart, passing in some options.
+                        var chart = new google.visualization.ColumnChart(document.getElementById('accessor_chart'));
+                        var option = {
+                                       width: '70%', height: '10%', colors: ['#0598d8', '#f97263'],
+                                       legend: 'none', 
+                                       chartArea: {
+                                            left: "5%",
+                                            bottom: "5%",
+                                            height: "90%",
+                                            width: "95%"
+                                        },
+                                       vAxis: { gridlines: { count: 0 } }
+                                       }
+    
+                        chart.draw(data, option);
+                    }
+
+                </script>
                <!--[if lt IE 9]>
                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
                <![endif]-->

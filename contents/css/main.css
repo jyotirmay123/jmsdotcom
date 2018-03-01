@@ -3020,3 +3020,19 @@ div.ppt {
     text-align: center;
     font-family: fantasy;
 }
+
+
+
+#accessor_chart_wrap {
+    position: relative;
+    padding-bottom: 5%;
+    height: 0;
+    overflow:hidden;
+}
+#accessor_chart {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+}
