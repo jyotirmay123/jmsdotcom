@@ -45,7 +45,7 @@ require_once(dirname(__FILE__)."/utils.php");
 				if(($cred["username"] == $_POST["username"]) && ($cred["password"] == $pass)){
 					$cookie_name = "user";
 					$cookie_value = md5($cred["username"]);
-					setcookie($cookie_name, $cookie_value, time() + (86400/6), "/");
+					setcookie($cookie_name, $cookie_value, time() + (86400/4), "/");
 					$sql = "UPDATE `login` SET cookie = '".$cookie_value."'";
 					mysqli_query($db, $sql);
 					header('Location: index.php');

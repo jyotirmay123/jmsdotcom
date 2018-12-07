@@ -1,4 +1,3 @@
-
 <?php
    require_once "config.php";
    $db = mysqli_connect($local->host, $local->user, $local->pass);
@@ -155,7 +154,7 @@
                                           <span class="tite-list">resume</span>
                                           <i class="fa fa-tasks icon_menu"></i>
                                        </li>
-                                       <li class="tabs-portfolio hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="portfolio"> 
+                                       <li class="tabs-portfolio hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a" data-tab-name="Projects"> 
                                           <span class="tite-list">projects</span>
                                           <i class="fa fa-briefcase icon_menu"></i>
                                        </li>
@@ -470,7 +469,7 @@
                                        <!-- .portfolio -->
                                        <div id="portfolio" class="content_2">
                                           <!-- .title -->
-                                          <h1 class="h-bloc">Portfolio - My Works</h1>
+                                          <h1 class="h-bloc">Projects - My Works</h1>
                                           <div class="container-portfolio">
                                              <!-- #filters -->
                                              <ul id="filters" class="clearfix">
@@ -799,7 +798,7 @@
                     google.setOnLoadCallback(drawChart);
                     
                     $(window).on("throttledresize", function (event) {
-                        drawChart();
+                        //drawChart();
                     });
 
                     function drawChart() {

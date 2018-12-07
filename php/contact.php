@@ -80,4 +80,3 @@ function send_mail($name, $email, $message) {
     //echo "</pre>";
 }
 ?>
-?>

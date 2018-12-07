@@ -1,4 +1,3 @@
-
 jQuery(document).ready(function($) {
 
     "use strict";
@@ -298,18 +297,18 @@ jQuery(document).ready(function($) {
     function initialize() {
         map = new GMaps({
             div: '#map',
-            lat: 48.0891,
-            lng: 11.4813,
+            lat: 48.1230491,
+            lng: 11.4916535,
             zoom: 13
 
         });
         map.addMarker({
-            lat: 48.0891,
-            lng: 11.4813,
+            lat: 48.1230491,
+            lng: 11.4916535,
             title: 'Marker with InfoWindow',
             icon: 'contents/images/map-marker.png',
             infoWindow: {
-                content: '<p>Fürstenried West, Munich, Germany</p>'
+                content: '<p>Schröfelhofstraße 16.6.7, Munich, Germany</p>'
             }
         });
     }

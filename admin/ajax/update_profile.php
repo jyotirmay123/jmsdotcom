@@ -1,12 +1,17 @@
 <?php
+
 $profile_pic_dir = "../../contents/images/img-profile/";
 $main_pic_dir = "../../contents/images/img/";
 
 require_once "../../config.php";
+
 require_once "../utils.php";
+
 if(!is_loggedin()){
     header('Location: ../login.php');
 }
+
+
 
 $db = mysqli_connect($local->host, $local->user, $local->pass);
 if($db) {

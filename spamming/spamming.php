@@ -1,7 +1,11 @@
 <?php
 require_once "config.php";
 
-send_mail("Jyotirmay Senapati", 'senapati.jyotirmay@gmail.com', "..Hi, </br>I am Jyotirmay Senapati with matriker num: 3692446. I am looking for a room urgently. I am homeless. Please help. </br> </br> Thank you.</br> Jyotirmay Senapati,</br> TUM.");
+send_mail("Jyotirmay Senapati", 'senapati.jyotirmay@gmail.com', "Hi, </br>I am Jyotirmay Senapati with matriker num: 3692446.
+
+I am looking for something permanent and not temporary sublet room. Please don't send any temporary offer to me. As people come later than me and register later than me are getting room easily. I am also looking for a permanent room like them. Recently, got to know about one more person, who joined with me and register on your portal on February, 2017 got a room in studentenstadt, where as I register on January, 2017, also for studentenstadt and still waiting. This is a classic example of skipping people and giving room to whoever you want. Please please please, don't do that. please give me a permanent room.
+
+Thank you.</br> Jyotirmay Senapati,</br> TUM.");
 
 function send_mail($name, $email, $message) {
     $mail_creds = $GLOBALS['mail'];
@@ -27,16 +31,17 @@ function send_mail($name, $email, $message) {
     $mail->Port = 465;                                    // TCP port to connect to 587 / 465
     $mail->setFrom($mail_creds->username, $name);
     $mail->addAddress('senapati.jyotirmay@gmail.com', 'Jyotirmay');     // Add a recipient
-    //$mail->addAddress('wrv@stwm.de');               // Name is optional
+    $mail->addAddress('wrv@stwm.de');               // Name is optional
     $mail->addReplyTo($email, 'Reply');
-    //$mail->addCC('katharina.schulz@stwm.de');
+    $mail->addCC('katharina.schulz@stwm.de');
+    $mail->addCC('heidi.bader@stwm.de');
     //$mail->addBCC('bcc@example.com');
 
     //$mail->addAttachment('../file/My_resume.pdf', 'My Resume');         // Add attachments
     //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
     $mail->isHTML(true);                                       // Set email format to HTML
 
-    $mail->Subject = "Looking for a room urgently.";
+    $mail->Subject = "Looking for a permanent room urgently and not a temporary sublet.";
     $mail->Body    = $message;
     $mail->AltBody = $message;
 

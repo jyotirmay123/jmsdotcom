@@ -1,0 +1,19 @@
+/**
+ * 
+ * @Author: Jyotirmay
+ * @Date: 02nd October, 2016
+ * 
+ * Blog Styles
+ *
+ */
+
+.button_class{
+    padding: 5px;
+    float: right;
+    margin: 10px auto;
+}
+.button_group{
+    cursor: pointer;
+    float: right;
+    margin:2px auto;
+}
