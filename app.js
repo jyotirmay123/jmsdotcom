@@ -1,6 +1,7 @@
 
 "use strict";
 const nodemailer = require("nodemailer");
+require("dotenv").config();
 var express = require("express");
 
 var app = express();
@@ -61,15 +62,15 @@ async function main(to) {
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
     let testAccount = await nodemailer.createTestAccount();
-
+    console.log(process.env.SMTP, process.env.MAIL, process.env.PASS);
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
+        host: process.env.SMTP,
+        port: process.env.SMTP_PORT,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: 'bizz.jyotirmays@gmail.com', // generated ethereal user
-            pass: 'bizz@jms1.', // generated ethereal password
+            user: process.env.MAIL, // generated ethereal user
+            pass: process.env.PASS, // generated ethereal password
         },
     });
 
